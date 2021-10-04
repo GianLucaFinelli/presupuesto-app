@@ -17,6 +17,8 @@ export class FormularioComponent implements OnInit {
   interes: string = '0';
   precio: string = "0";
 
+  alert: boolean = false;
+
   constructor(private cotizadorService: CotizadorPrespuestoService) { }
 
   ngOnInit(): void {
@@ -66,9 +68,11 @@ export class FormularioComponent implements OnInit {
 
     if(this.validateCotizacion(cotizacion)){
       this.cotizadorService.setResultCotizacion(true);
+      this.alert = false;
     }
     else{
       this.cotizadorService.setResultCotizacion(false);
+      this.alert = true;
     }
   }
 

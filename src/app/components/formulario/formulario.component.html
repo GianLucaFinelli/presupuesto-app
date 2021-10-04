@@ -1,6 +1,8 @@
 <div class="formulario">
+    <div class="alert" [style]="{ 'display': alert ? 'flex' : 'none' }">
+        ¡Complete todos los campos...!
+    </div>
     <div class="row">
-
         <div class="form-group col-3">
             <label><i class='bx bxs-carousel' style="margin-right: 5px;"></i> Seleccioná tu marca</label>
             <select name="cars" id="cars" [(ngModel)]="marca" (change)="MarcaSelected()" >
