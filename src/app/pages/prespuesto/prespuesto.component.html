@@ -1,0 +1,18 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    <div style="margin: 30px 40px 0px 40px;">
+        <h4> Consigue tu presupuesto ahora!</h4>
+    </div>
+    <div class="box-two">
+        <app-gallery></app-gallery>
+        <app-formulario></app-formulario>
+    </div>
+    <div [style]="{ 'display': enabled ? 'flex' : 'none', 'margin': '30px 40px 0px 40px' }">
+        <h4> Consigue tu presupuesto ahora!</h4>
+    </div>
+    <div class="box-single">
+        <app-resultado [style]="{ 'display': enabled ? 'flex' : 'none' }"></app-resultado>
+    </div>
+</div>
+

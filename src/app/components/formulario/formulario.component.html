@@ -1,0 +1,37 @@
+<div class="formulario">
+    <div class="row">
+
+        <div class="form-group col-3">
+            <label><i class='bx bxs-carousel' style="margin-right: 5px;"></i> Seleccioná tu marca</label>
+            <select name="cars" id="cars" [(ngModel)]="marca" (change)="MarcaSelected()" >
+                <option value="./assets/images/defaultVector.png" selected>-- Seleccionar --</option>
+                <option value="./assets/images/fiatVector.png">Fiat</option>
+                <option value="./assets/images/volkswagenVector.png">VolksWagen</option>
+                <option value="./assets/images/peugeotVector.png">Peugeot</option>
+              </select>
+        </div>
+        <div class="form-group col-3">
+            <label><i class='bx bxs-component' style="margin-right: 5px;"></i> Seleccioná el paquete</label>
+            <select name="cars" id="cars" [(ngModel)]="paquete">
+                <option value="default" selected >-- Seleccionar --</option>
+                <option value="full">Full</option>
+                <option value="base">Base</option>
+              </select>
+        </div>
+        <div class="form-group col-3">
+            <label><i class='bx bxs-calculator' style="margin-right: 5px;"></i> Cuotas - Interes
+                <span [ngStyle]="{ 'color': interes != '0' ? 'red' : 'grey' }">{{ interes }}%</span>
+            </label>
+            <select name="cars" id="cars" [(ngModel)]="cuotas" (change)="coutasSelected()">
+                <option value="default" selected >-- Seleccionar --</option>
+                <option value="3">3</option>
+                <option value="6">6</option>
+                <option value="9">9</option>
+                <option value="12">12</option>
+              </select>
+        </div>
+    </div>
+    <div class="m-10">
+        <button class="button" (click)="SendResult()"><i class='bx bxs-timer' style="margin-right: 5px; font-size: 22px;"></i>Cotizar</button>
+    </div>
+</div>

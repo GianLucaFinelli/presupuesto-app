@@ -1,0 +1,29 @@
+
+.navbar{
+    padding: 8px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: var(--bg-color);
+    border-bottom: 1px solid var(--border-box);
+    .nav-item{
+        padding: 8px 10px;
+        color: var(--text-color);
+        margin: 0px 5px;
+        border-radius: var(--br-box);
+        font-weight: 600;
+        transition: 0.3s all ease;
+    }
+    .nav-item.active{
+        color: rgb(67, 67, 181);
+        cursor: pointer;
+    }
+    .nav-item:hover{
+        transition: 0.3s all ease;
+        background-color: var(--bg-color);
+        cursor: pointer;
+    }
+    .nav-item:nth-last-child(1){
+        margin-right: 10px;
+    }
+}

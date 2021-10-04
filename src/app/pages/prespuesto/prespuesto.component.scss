@@ -1,0 +1,18 @@
+.container{
+    width: 80%;
+    margin: auto;
+}
+
+.box-two{
+    display: grid;
+    grid-template-columns: 300px auto;
+    padding: 10px;
+    gap: 15px;
+}
+
+.box-simple{
+    display: grid;
+    grid-template-columns: auto;
+    padding: 10px;
+    gap: 15px;
+}
