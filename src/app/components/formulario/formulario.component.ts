@@ -87,7 +87,7 @@ export class FormularioComponent implements OnInit {
       cuotas: this.cuotas,
       paquete: this.paquete,
       interes: this.interes,
-      precio: this.options.find(op => op.label == marcas[this.marca]["nombre"])
+      precio: this.options.find(op => op.label == marcas[this.marca]["nombre"]).precio
     });
     this.cotizadorService.setCotizacion(cotizacion);
 
