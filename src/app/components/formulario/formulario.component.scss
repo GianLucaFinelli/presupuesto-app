@@ -7,13 +7,6 @@
     height: 280px;
     display: flex;
     flex-direction: column;
-    .body{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 10px;
-    }
     div:not(.form-group,.cabecera,.body){
         width: 100% !important;
         display: flex;
@@ -66,7 +59,7 @@
         width: 70%;
         border: none !important;
         border-radius: var(--br-box);
-        background-color: rgb(67, 67, 181);
+        background-color: var(--color-blue);
         color: var(--bg-color);
         text-align: center;
         padding: 10px 16px;
@@ -78,6 +71,14 @@
 .cabecera{
     padding: 15px;
     border-bottom: 1px solid var(--bg-box-color);
+}
+
+.body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
 }
 
 
