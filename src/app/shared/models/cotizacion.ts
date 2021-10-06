@@ -6,6 +6,18 @@ export class Cotizacion {
     marca!: string;
     paquete!: string;
 
+    /**
+     *
+     */
+    constructor(obj: any) {
+        this.precio = obj.precio;
+        this.cuotas = obj.cuotas;
+        this.interes = obj.interes;
+        this.marca = obj.marca;
+        this.paquete = obj.paquete;
+
+    }
+
 
   Cuotas(cotizacion: Cotizacion) : number[] {
     var items: number[] = [];

@@ -7,10 +7,14 @@
     height: 280px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    div:not(.form-group){
+    .body{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+    div:not(.form-group,.cabecera,.body){
         width: 100% !important;
         display: flex;
         flex-direction: column;
@@ -71,6 +75,11 @@
     }
 }
 
+.cabecera{
+    padding: 15px;
+    border-bottom: 1px solid var(--bg-box-color);
+}
+
 
 .m-10{
     margin: 10px;
@@ -81,4 +90,12 @@
     background-color: rgb(255, 198, 198);
     border-radius: var(--br-box);
     margin-bottom: 5px;
+    position: relative;
+    span{
+        position: absolute;
+        right: 0;
+        margin-right: 10px;
+        font-weight: bold;
+        cursor: pointer;
+    }
 }

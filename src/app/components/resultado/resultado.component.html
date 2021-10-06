@@ -1,13 +1,21 @@
 
 <div class="result">
     <div class="cuotas-cotizacion">
-        <h4 class='header-cotizacion'><i class='bx bx-calculator' style="margin-right: 5px;"></i>Cuotas: </h4>
-        <h5> cantidad de cuotas: {{ cuotas.length }} - <b>{{ cuotas[0] }}</b></h5>
+        <div class="cabecera">
+            <h4><i class='bx bx-calculator' style="margin-right: 5px;"></i>Cuotas: </h4>
+        </div>
+        <div class="body">
+            <h5> cantidad de cuotas: {{ cuotas.length }} - <b>{{ cuotas[0] }}</b></h5>
+        </div>
     </div>
     <div class="detalles-cotizacion">
-         <h4 class='header-cotizacion'><i class='bx bx-user-pin' style="margin-right: 5px;"></i> Cotizacion:</h4>
-         <h5> Marca: <b>{{cotizacion.marca}}</b></h5>
-         <h5> Paquete: <b>{{cotizacion.paquete}}</b></h5>
-         <h5> precio: <b>{{precio}}</b></h5>
+         <div class="cabecera">
+            <h4><i class='bx bx-user-pin' style="margin-right: 5px;"></i> Cotizacion:</h4>
+         </div>
+         <div class="body">
+            <h5> Marca: <b>{{cotizacion.marca}}</b></h5>
+            <h5> Paquete: <b>{{cotizacion.paquete}}</b></h5>
+            <h5> precio: <b>{{precio}}</b></h5>
+         </div>
     </div>
 </div>

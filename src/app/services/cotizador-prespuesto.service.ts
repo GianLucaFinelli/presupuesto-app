@@ -9,7 +9,7 @@ import { Cotizacion } from '../shared/models/cotizacion';
 export class CotizadorPrespuestoService {
 
   marcaSelected: BehaviorSubject<string> = new BehaviorSubject<string>(imagesMarcas.default);
-  cotizacion : BehaviorSubject<Cotizacion> = new BehaviorSubject<Cotizacion>(new Cotizacion());
+  cotizacion : BehaviorSubject<Cotizacion> = new BehaviorSubject<Cotizacion>(new Cotizacion({}));
   resultCotizacion : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   cuotas: BehaviorSubject<number[]> = new BehaviorSubject<number[]>([]);
 

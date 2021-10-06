@@ -10,7 +10,7 @@ import { Cotizacion } from 'src/app/shared/models/cotizacion';
 export class ResultadoComponent implements OnInit {
 
   result : boolean = false;
-  cotizacion: Cotizacion = new Cotizacion();
+  cotizacion: Cotizacion = new Cotizacion({});
   cuotas: number[] = [];
   precio: number = 0;
 

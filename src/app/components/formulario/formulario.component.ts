@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CotizadorPrespuestoService } from 'src/app/services/cotizador-prespuesto.service';
-import { imagesMarcas } from 'src/app/shared/enums';
+import { cuotas, imagesMarcas, marcas } from 'src/app/shared/enums';
 import { Cotizacion } from 'src/app/shared/models/cotizacion';
 
 @Component({
@@ -10,12 +10,59 @@ import { Cotizacion } from 'src/app/shared/models/cotizacion';
 })
 export class FormularioComponent implements OnInit {
 
-  marca: string = "./assets/images/defaultVector.png";
-  marcaSelected : string = '';
-  paquete: string = "default";
-  cuotas: string = "default";
+
+  titleCabecera:string = "Titulo de prueba de cabecera";
+  marca: string = "Default";
+  paquete: string = "Default";
+  cuotas: string = "Default";
   interes: string = '0';
   precio: string = "0";
+
+  options: any[] = [
+    {
+      value:  marcas["Default"]["nombre"],
+      label: "-- Seleccionar --",
+      precio: "0"
+    },
+    {
+      value: marcas["Fiat"]["nombre"],
+      label: marcas["Fiat"]["nombre"],
+      precio: "14560"
+    },
+    {
+      value: marcas["Peugeot"]["nombre"],
+      label: marcas["Peugeot"]["nombre"],
+      precio: "45908"
+    },
+    {
+      value: marcas["Volkswagen"]["nombre"],
+      label: marcas["Volkswagen"]["nombre"],
+      precio: "36200"
+    },
+  ];
+
+  cuotasList: any = [
+    {
+      value: cuotas["default"]["value"],
+      label: "-- Seleccionar --",
+    },
+    {
+      value: cuotas["3"]["value"],
+      label: cuotas["3"]["value"],
+    },
+    {
+      value: cuotas["6"]["value"],
+      label: cuotas["6"]["value"],
+    },
+    {
+      value: cuotas["9"]["value"],
+      label: cuotas["9"]["value"],
+    },
+    {
+      value: cuotas["12"]["value"],
+      label: cuotas["12"]["value"],
+    }
+  ]
 
   alert: boolean = false;
 
@@ -25,45 +72,23 @@ export class FormularioComponent implements OnInit {
   }
 
   MarcaSelected(){
-    this.cotizadorService.setMarcaSelected(this.marca);
-    this.verificateMarcaSelectedName(this.marca);
-
-    if(this.marca == imagesMarcas.fiat){
-      this.precio = "16700";
-    }
-    else if (this.marca == imagesMarcas.peugeot){
-      this.precio = "45104";
-    }
-    else if (this.marca == imagesMarcas.volkswagen){
-      this.precio = "38100";
-    }
+    this.cotizadorService.setMarcaSelected(marcas[this.marca]["img"]);
+    this.precio = marcas[this.marca]["precio"];
   }
 
   coutasSelected(){
-    if(this.cuotas == "default"){
-      this.interes = '0';
-    }
-    if(this.cuotas == "3"){
-      this.interes = '3';
-    }
-    if(this.cuotas == "6"){
-      this.interes = '7';
-    }
-    if(this.cuotas == "9"){
-      this.interes = '12';
-    }
-    if(this.cuotas == "12"){
-      this.interes = '16';
-    }
+    const nombre = cuotas[this.cuotas]["value"];
+    this.interes = cuotas[nombre]["interes"];
   }
 
   SendResult(){
-    var cotizacion = new Cotizacion();
-    cotizacion.marca = this.marcaSelected;
-    cotizacion.cuotas = this.cuotas;
-    cotizacion.paquete = this.paquete;
-    cotizacion.interes = this.interes;
-    cotizacion.precio = this.precio;
+    var cotizacion = new Cotizacion({
+      marca: this.marca,
+      cuotas: this.cuotas,
+      paquete: this.paquete,
+      interes: this.interes,
+      precio: this.options.find(op => op.label == marcas[this.marca]["nombre"])
+    });
     this.cotizadorService.setCotizacion(cotizacion);
 
     if(this.validateCotizacion(cotizacion)){
@@ -72,33 +97,26 @@ export class FormularioComponent implements OnInit {
     }
     else{
       this.cotizadorService.setResultCotizacion(false);
+      const alert =  document.getElementById("alert-error");
+    if(alert) alert.style.display = "flex";
       this.alert = true;
     }
   }
 
   validateCotizacion(cotizacion: Cotizacion): boolean{
-    if(cotizacion.cuotas != "default" &&
+    if(cotizacion.cuotas != "Default" &&
        cotizacion.interes != '0' &&
-       cotizacion.paquete != "default" &&
-       cotizacion.marca != "./assets/images/defaultVector.png")
+       cotizacion.paquete != "Default" &&
+       cotizacion.marca != "Default")
     {
       return true;
     }
     return false;
   }
 
-  verificateMarcaSelectedName(marca: string){
-    if(marca == "./assets/images/defaultVector.png"){
-      this.marcaSelected = "Default";
-    }
-    if(marca == "./assets/images/fiatVector.png"){
-      this.marcaSelected = "Fiat";
-    }
-    if(marca == "./assets/images/volkswagenVector.png"){
-      this.marcaSelected = "Volkswagen";
-    }
-    if(marca == "./assets/images/peugeotVector.png"){
-      this.marcaSelected = "Peugeot";
-    }
+  deleteAlert(){
+    const alert =  document.getElementById("alert-error");
+    if(alert) alert.style.display = "none";
   }
+
 }
