@@ -16,3 +16,11 @@
     padding: 10px;
     gap: 15px;
 }
+
+
+@media screen and (max-width: 1024px){
+
+    .box-two{
+        grid-template-columns: none !important;
+    }
+}
