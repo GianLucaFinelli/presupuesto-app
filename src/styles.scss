@@ -55,11 +55,15 @@ body{
 }
 
 .border-top{
-    border-top: 1px solid var(--bg-box-color);
+    border-top: 1px solid var(--border-box);
 }
 
 .border-bottom{
-    border-bottom: 1px solid var(--bg-box-color);
+    border-bottom: 1px solid var(--border-box);
+}
+
+.border-left{
+    border-left: 1px solid var(--border-box);
 }
 
 .box-shadow{
