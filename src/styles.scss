@@ -24,6 +24,11 @@ body{
     // font-family: 'Oswald', sans-serif;
     // font-family: 'Advent Pro', sans-serif;
     font-family: 'Oxygen', sans-serif;
+    font-size: 14px;
+}
+
+.text-info{
+    color: var(--color-blue);
 }
 
 .text-center{
@@ -78,7 +83,7 @@ body{
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 10px;
+        padding: 10px 10px 20px;
     }
     div:not(.form-group,.cabecera,.body){
         width: 100% !important;
@@ -89,7 +94,7 @@ body{
     }
 
     .form-group{
-        margin: 10px;
+        // margin: 10px;
         padding: 10px;
         width: 100%;
         input{
@@ -143,7 +148,7 @@ body{
 .body{
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 10px 10px 20px;
     width: 100%;
 }
 
@@ -152,11 +157,15 @@ body{
 }
 
 .alert{
+    margin: 0px auto;
     padding: 10px;
-    background-color: rgb(255, 198, 198);
+    width: 80%;
+    background-color: rgb(225, 119, 119);
+    color: rgb(68, 13, 13);
     border-radius: var(--br-box);
     margin-bottom: 5px;
     position: relative;
+    font-weight: bold;
     span{
         position: absolute;
         right: 0;

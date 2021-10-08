@@ -44,6 +44,6 @@ export const cuotas: any = {
     },
     default: {
         value: "Default",
-        interes: 3
+        interes: 0
     },
 }

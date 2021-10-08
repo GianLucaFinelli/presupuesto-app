@@ -77,17 +77,20 @@ export class FormularioComponent implements OnInit {
   }
 
   coutasSelected(){
-    const nombre = cuotas[this.cuotas]["value"];
+    const nombre = this.cuotas == "Default" ?
+      cuotas[this.cuotas.toLowerCase()]["value"].toLowerCase() :
+      cuotas[this.cuotas]["value"];
     this.interes = cuotas[nombre]["interes"];
   }
 
   SendResult(){
-    var cotizacion = new Cotizacion({
+    let option = this.options.find(op => op.label == marcas[this.marca]["nombre"])
+    let cotizacion = new Cotizacion({
       marca: this.marca,
       cuotas: this.cuotas,
       paquete: this.paquete,
       interes: this.interes,
-      precio: this.options.find(op => op.label == marcas[this.marca]["nombre"]).precio
+      precio: option != undefined ? option.precio : "0"
     });
     this.cotizadorService.setCotizacion(cotizacion);
 
@@ -104,14 +107,14 @@ export class FormularioComponent implements OnInit {
   }
 
   validateCotizacion(cotizacion: Cotizacion): boolean{
-    if(cotizacion.cuotas != "Default" &&
-       cotizacion.interes != '0' &&
-       cotizacion.paquete != "Default" &&
-       cotizacion.marca != "Default")
+    if(cotizacion.cuotas == "Default" ||
+       cotizacion.interes == '0' ||
+       cotizacion.paquete == "Default" ||
+       cotizacion.marca == "Default")
     {
-      return true;
+      return false;
     }
-    return false;
+    return true;
   }
 
   deleteAlert(){

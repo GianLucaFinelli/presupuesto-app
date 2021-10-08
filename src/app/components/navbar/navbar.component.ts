@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
+  userImage: string = './assets/images/rostro.jpg';
+  userName: string = 'Web Developer';
+
   constructor() { }
 
   ngOnInit(): void {

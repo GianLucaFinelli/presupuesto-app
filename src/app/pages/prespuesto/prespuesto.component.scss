@@ -8,7 +8,8 @@
     display:flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    height: calc(100vh - 53px);
+    height: calc(100vh - 57px);
+    min-height: calc(100vh - 57px);
     .section{
         width:75%;
         padding: 0px 15px;
@@ -24,6 +25,8 @@
         flex-direction: column;
     }
 }
+
+
 
 .box-two{
     display: grid;
@@ -45,4 +48,29 @@
     .box-two{
         grid-template-columns: none !important;
     }
+
+    .container-100{
+        width: 100%;
+        display:flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        height: calc(100vh - 57px);
+        min-height: calc(100vh - 57px);
+        .section{
+            width:100%;
+            padding: 0px 15px;
+        }
+        .create{
+            width:100%;
+            background-color: var(--bg-color);
+            border-radius: none !important;
+            border: none !important;
+            min-height: 280px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
 }
