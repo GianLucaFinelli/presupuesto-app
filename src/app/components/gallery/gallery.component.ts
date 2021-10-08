@@ -8,6 +8,7 @@ import { CotizadorPrespuestoService } from 'src/app/services/cotizador-prespuest
 })
 export class GalleryComponent implements OnInit {
 
+  titleCabecera: string = "Tu marca Seleccionada.";
   marcaSelected!: string;
 
   constructor(private cotizadorService: CotizadorPrespuestoService) { }

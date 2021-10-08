@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 
 <div class="container">
-    <div style="margin: 30px 40px 0px 40px;">
+    <!-- <div style="margin: 30px 40px 0px 40px;">
         <h1>Cotizador</h1>
     </div>
     <div class="box-two">
@@ -13,6 +13,21 @@
     </div>
     <div class="box-single">
         <app-resultado [style]="{ 'display': enabled ? 'flex' : 'none' }"></app-resultado>
+    </div> -->
+</div>
+
+<div class="container-100">
+    <div class="section">
+        <div class="box-single">
+            <div style="margin:20px 40px 0px 40px">
+                <h3 style="margin-top: 10px;"> Cotización Actual:</h3>
+            </div>
+            <app-resultado></app-resultado>
+        </div>
+    </div>
+    <div class="create">
+        <app-gallery></app-gallery>
+        <app-formulario></app-formulario>
     </div>
 </div>
 

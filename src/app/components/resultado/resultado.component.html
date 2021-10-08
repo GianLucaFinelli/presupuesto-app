@@ -1,21 +1,27 @@
 
 <div class="result">
-    <div class="cuotas-cotizacion">
+    <div class="cuotas-cotizacion box-shadow article-card">
         <div class="cabecera">
             <h4><i class='bx bx-calculator' style="margin-right: 5px;"></i>Cuotas: </h4>
         </div>
         <div class="body">
-            <h5> cantidad de cuotas: {{ cuotas.length }} - <b>{{ cuotas[0] }}</b></h5>
+            <h5 *ngIf="result"> cantidad de cuotas: {{ cuotas.length }} - <b>{{ cuotas[0] }}</b></h5>
+            <div class="text-center" *ngIf="!result">
+                Sin resultados
+            </div>
         </div>
     </div>
-    <div class="detalles-cotizacion">
+    <div class="detalles-cotizacion box-shadow article-card">
          <div class="cabecera">
             <h4><i class='bx bx-user-pin' style="margin-right: 5px;"></i> Cotizacion:</h4>
          </div>
-         <div class="body">
+         <div class="body" *ngIf="result">
             <h5> Marca: <b>{{cotizacion.marca}}</b></h5>
             <h5> Paquete: <b>{{cotizacion.paquete}}</b></h5>
             <h5> precio: <b>{{precio}}</b></h5>
+         </div>
+         <div class="body text-center" *ngIf="!result">
+             Sin resultados
          </div>
     </div>
 </div>

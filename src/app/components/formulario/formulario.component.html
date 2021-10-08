@@ -1,5 +1,5 @@
 <div class="article">
-    <div class="cabecera">
+    <div class="cabecera border-bottom border-top">
         <h4>{{ titleCabecera }}</h4>
     </div>
     <div class="body">
@@ -30,9 +30,9 @@
                     <option *ngFor="let cuota of cuotasList" [value]="cuota.value">{{ cuota.label }}</option>
                   </select>
             </div>
-        </div>
-        <div class="m-10">
-            <button class="button" (click)="SendResult()"><i class='bx bxs-timer' style="margin-right: 5px; font-size: 22px;"></i>Cotizar</button>
+            <div class="form-group col-3 m-10">
+                <button class="button" (click)="SendResult()"><i class='bx bxs-timer' style="margin-right: 5px; font-size: 22px;"></i>Cotizar</button>
+            </div>
         </div>
     </div>
 </div>
