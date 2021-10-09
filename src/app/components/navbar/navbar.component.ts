@@ -7,12 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
+  toggleMenuFlag: boolean = true;
   userImage: string = './assets/images/rostro.jpg';
   userName: string = 'Web Developer';
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  toggleMenu(){
+    var menu = document.getElementById("menu");
+    if(this.toggleMenuFlag){
+      this.toggleMenuFlag = !this.toggleMenuFlag;
+      menu?.classList.add("menu-active")
+    }
+    else{
+      this.toggleMenuFlag = !this.toggleMenuFlag;
+      menu?.classList.remove("menu-active")
+    }
   }
 
 }
