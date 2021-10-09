@@ -8,8 +8,8 @@ import { CotizadorPrespuestoService } from 'src/app/services/cotizador-prespuest
 })
 export class GalleryComponent implements OnInit {
 
-  titleQuestion: string = "¿Quieres informarte?";
-  titleInformation: string = " saca tu cotización!";
+  titleQuestion: string = "";
+  titleInformation: string = "Generar Cotización";
   marcaSelected!: string;
 
   constructor(private cotizadorService: CotizadorPrespuestoService) { }
