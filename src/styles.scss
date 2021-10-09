@@ -29,6 +29,10 @@ body{
     font-size: 14px;
 }
 
+.d-none{
+    display: none !important;
+}
+
 .text-info{
     color: var(--color-blue);
 }
@@ -81,7 +85,7 @@ body{
 .article{
     position: relative;
     width: auto;
-    min-height: 280px;
+    // min-height: 280px;
     height: 100%;
     display: flex;
     flex-direction: column;

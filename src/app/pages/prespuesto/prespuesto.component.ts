@@ -10,6 +10,7 @@ import { Cotizacion } from 'src/app/shared/models/cotizacion';
 })
 export class PrespuestoComponent implements OnInit {
 
+  toggleCreateFlag: boolean = true;
   marca!:string;
   cuotas: number[] = [];
   interes!: number;
@@ -26,6 +27,23 @@ export class PrespuestoComponent implements OnInit {
     });
   }
 
-
+  toggleCreate(){
+    var menu = document.getElementById("toggle-create");
+    var contenedor = document.getElementById("create-contenedor");
+    if(this.toggleCreateFlag){
+      this.toggleCreateFlag = !this.toggleCreateFlag;
+      menu?.classList.add("create-active-responsive");
+      menu?.classList.add("bottom-reset");
+      // menu?.classList.add("top-0");
+      // contenedor?.classList.add("d-none");
+    }
+    else{
+      this.toggleCreateFlag = !this.toggleCreateFlag;
+      menu?.classList.remove("create-active-responsive")
+      // menu?.classList.add("top-97");
+      menu?.classList.remove("bottom-reset");
+      // contenedor?.classList.remove("d-none");
+    }
+  }
 
 }

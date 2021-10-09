@@ -25,12 +25,14 @@
             <app-resultado></app-resultado>
         </div>
     </div>
-    <div class="create border-left">
-        <div class="toggle-create">
+    <div class="create border-left" id="toggle-create">
+        <div class="toggle-create" (click)="toggleCreate()">
             <i class='bx bx-chevron-right'></i>
         </div>
-        <app-gallery></app-gallery>
-        <app-formulario></app-formulario>
+        <div class="create-contenedor" id="create-contenedor">
+            <app-gallery></app-gallery>
+            <app-formulario></app-formulario>
+        </div>
     </div>
 </div>
 
