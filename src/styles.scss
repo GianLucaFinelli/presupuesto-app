@@ -35,6 +35,27 @@ body{
     // font-family: 'Advent Pro', sans-serif;
     font-family: 'Oxygen', sans-serif;
     font-size: 14px;
+    transition: 0.3s all ease;
+}
+
+.gap-10{
+    gap: 10px;
+}
+
+.p-10{
+    padding: 10px;
+}
+
+.p-10-20{
+    padding: 10px 20px;
+}
+
+.p-20{
+    padding: 20px;
+}
+
+.m-10{
+    margin: 10px;
 }
 
 .m-20{
@@ -61,7 +82,14 @@ body{
     justify-content: space-around;
 }
 
-.align-items{
+@media screen and (max-width: 1200px){
+    .justify-content-between, .justify-content-center{
+        justify-content: space-around;
+    }
+}
+
+
+.align-center{
     align-items: center;
 }
 
@@ -112,10 +140,25 @@ body{
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }
 
+/* ------------------ */
+
 .article-card{
     border-radius: var(--br-box);
     background-color: var(--bg-color);
     border: 1px solid var(--border-box-color);
+}
+
+.article-icon{
+    display: flex;
+    align-items:center;
+    font-size: var(--title);
+    color:var(--color-dark-gray);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.article-icon:hover{
+    background-color: var(--border-box-color);
 }
 
 .article{
@@ -198,9 +241,6 @@ body{
     width: 100%;
 }
 
-.m-10{
-    margin: 10px;
-}
 
 .alert{
     margin: 0px auto;
@@ -221,4 +261,67 @@ body{
         font-weight: bold;
         cursor: pointer;
     }
+}
+
+/* ----------------------- */
+
+.w-5{
+    transition: 0.3s all ease;
+    width: 5%;
+}
+.w-25{
+    transition: 0.3s all ease;
+    width: 25%;
+}
+.w-70{
+    transition: 0.3s all ease;
+    width:70%;
+}
+.w-75{
+    transition: 0.3s all ease;
+    width:75%;
+}
+.w-95{
+    transition: 0.3s all ease;
+    width: 95%;
+}
+.w-100{
+    transition: 0.3s all ease;
+    width:100%;
+}
+
+/* ----------------------- */
+
+.article-cabecera{
+    margin-bottom: 0px;
+    font-size: var(--title-principal);
+}
+
+@media screen and (max-width: 1024px){
+
+    .article-cabecera{
+        margin-bottom: 10px;
+    }
+
+    .result{
+        display: flex;
+        flex-wrap: wrap;
+        .detalles-cotizacion,.cuotas-cotizacion{
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width: 768px){
+
+    .w-5,
+    .w-25,
+    .w-70,
+    .w-75,
+    .w-95,
+    .w-100{
+        transition: 0.3s all ease;
+        width:100%;
+    }
+
 }

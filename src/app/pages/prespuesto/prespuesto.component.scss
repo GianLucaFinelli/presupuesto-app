@@ -21,22 +21,6 @@
         }
         width: 5%;
     }
-    .w-25{
-        transition: 0.3s all ease;
-        width: 25%;
-    }
-    .w-75{
-        transition: 0.3s all ease;
-        width:75%;
-    }
-    .w-95{
-        transition: 0.3s all ease;
-        width: 95%;
-    }
-    .w-100{
-        transition: 0.3s all ease;
-        width:100%;
-    }
     .create{
         background-color: var(--bg-color);
         min-height: calc(100vh - 57px);
@@ -113,6 +97,10 @@
 
 
 @media screen and (max-width: 1024px){
+
+    .flex-wrap-mobile{
+        flex-wrap: wrap;
+    }
 
     .box-two{
         grid-template-columns: none !important;

@@ -10,9 +10,11 @@ import { FormularioComponent } from './components/formulario/formulario.componen
 import { CotizacionComponent } from './components/cotizacion/cotizacion.component';
 import { ResultadoComponent } from './components/resultado/resultado.component';
 import { CabeceraConAccionesComponent } from './components/cabecera-con-acciones/cabecera-con-acciones.component';
-import { EstadisticaChartComponent } from './components/estadistica-chart/estadistica-chart.component';
 import { RegistroActualComponent } from './components/registro-actual/registro-actual.component';
 import { RegistroListadoComponent } from './components/registro-listado/registro-listado.component';
+import { RegistroEstadisticsChartComponent } from './components/registro-estadistics-chart/registro-estadistics-chart.component';
+
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -24,13 +26,14 @@ import { RegistroListadoComponent } from './components/registro-listado/registro
     CotizacionComponent,
     ResultadoComponent,
     CabeceraConAccionesComponent,
-    EstadisticaChartComponent,
     RegistroActualComponent,
-    RegistroListadoComponent
+    RegistroListadoComponent,
+    RegistroEstadisticsChartComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
