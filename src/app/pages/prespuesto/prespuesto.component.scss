@@ -15,6 +15,7 @@
     .w-5{
         transition: 0.3s all ease;
         .toggle-create{
+            transform: rotate(180deg);
             transition: 0.3s all ease;
             right: 3.8% !important;
         }
