@@ -9,6 +9,10 @@ import { GalleryComponent } from './components/gallery/gallery.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { CotizacionComponent } from './components/cotizacion/cotizacion.component';
 import { ResultadoComponent } from './components/resultado/resultado.component';
+import { CabeceraConAccionesComponent } from './components/cabecera-con-acciones/cabecera-con-acciones.component';
+import { EstadisticaChartComponent } from './components/estadistica-chart/estadistica-chart.component';
+import { RegistroActualComponent } from './components/registro-actual/registro-actual.component';
+import { RegistroListadoComponent } from './components/registro-listado/registro-listado.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,11 @@ import { ResultadoComponent } from './components/resultado/resultado.component';
     GalleryComponent,
     FormularioComponent,
     CotizacionComponent,
-    ResultadoComponent
+    ResultadoComponent,
+    CabeceraConAccionesComponent,
+    EstadisticaChartComponent,
+    RegistroActualComponent,
+    RegistroListadoComponent
   ],
   imports: [
     BrowserModule,
