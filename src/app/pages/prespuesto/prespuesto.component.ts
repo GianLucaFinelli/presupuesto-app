@@ -25,25 +25,51 @@ export class PrespuestoComponent implements OnInit {
       console.log(next);
       this.enabled = next;
     });
+
   }
 
   toggleCreate(){
-    var menu = document.getElementById("toggle-create");
-    var contenedor = document.getElementById("create-contenedor");
-    if(this.toggleCreateFlag){
-      this.toggleCreateFlag = !this.toggleCreateFlag;
-      menu?.classList.add("create-active-responsive");
-      menu?.classList.add("bottom-reset");
-      // menu?.classList.add("top-0");
-      // contenedor?.classList.add("d-none");
+    // Get the browser window size
+    var windowWidth: number = window.innerWidth;
+    var windowHeight: number = window.innerHeight;
+    console.log(`windowWidth: ${windowWidth}`);
+    console.log(`windowHeight: ${windowHeight}`);
+
+
+    var aside = document.getElementById("toggle-create");
+    var section = document.getElementById("toggle-section");
+    var conteidoAside = document.getElementById("create-contenedor");
+    if(windowWidth < 1024){
+      if(this.toggleCreateFlag){
+        this.toggleCreateFlag = !this.toggleCreateFlag;
+        aside?.classList.add("create-active-responsive");
+        aside?.classList.add("bottom-reset");
+  
+      }
+      else{
+        this.toggleCreateFlag = !this.toggleCreateFlag;
+        aside?.classList.remove("create-active-responsive")
+        aside?.classList.remove("bottom-reset");
+      }
     }
     else{
-      this.toggleCreateFlag = !this.toggleCreateFlag;
-      menu?.classList.remove("create-active-responsive")
-      // menu?.classList.add("top-97");
-      menu?.classList.remove("bottom-reset");
-      // contenedor?.classList.remove("d-none");
+      if(this.toggleCreateFlag){
+        this.toggleCreateFlag = !this.toggleCreateFlag;
+        section?.classList.add("w-95");
+        conteidoAside?.classList.add("d-none");
+        aside?.classList.remove("w-25");
+        aside?.classList.add("w-5");
+      }
+      else{
+        this.toggleCreateFlag = !this.toggleCreateFlag;
+        section?.classList.remove("w-95");
+        conteidoAside?.classList.remove("d-none");
+        aside?.classList.remove("w-5");
+        aside?.classList.add("w-25");
+      }
     }
+
+
   }
 
 }
