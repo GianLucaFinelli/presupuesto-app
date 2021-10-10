@@ -32,9 +32,8 @@ export class PrespuestoComponent implements OnInit {
     // Get the browser window size
     var windowWidth: number = window.innerWidth;
     var windowHeight: number = window.innerHeight;
-    console.log(`windowWidth: ${windowWidth}`);
-    console.log(`windowHeight: ${windowHeight}`);
-
+    // console.log(`windowWidth: ${windowWidth}`);
+    // console.log(`windowHeight: ${windowHeight}`);
 
     var aside = document.getElementById("toggle-create");
     var section = document.getElementById("toggle-section");
@@ -68,8 +67,6 @@ export class PrespuestoComponent implements OnInit {
         aside?.classList.add("w-25");
       }
     }
-
-
   }
 
 }
