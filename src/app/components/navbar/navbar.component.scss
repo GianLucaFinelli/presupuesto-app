@@ -6,7 +6,9 @@
     align-items: center;
     flex-wrap: wrap;
     background-color: var(--bg-color);
-    border-bottom: 1px solid var(--border-box-color);
+    // border-bottom: 1px solid var(--border-box-color);
+    z-index: 1;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
     position: relative;
     .menu{
         display: flex;

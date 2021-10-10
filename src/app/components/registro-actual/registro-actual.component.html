@@ -3,11 +3,23 @@
   <i class="bx bx-dots-horizontal-rounded article-icon"></i>
 </div>
 <div class="d-flex p-10">
-  <p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro itaque
-    nostrum facere magni vitae. Illo labore, nihil commodi ea ad exercitationem
-    dolores dignissimos sunt veniam soluta tempore repudiandae amet tempora.
-    Tenetur praesentium culpa neque adipisci quaerat voluptatum perferendis?
-    Dolores, mollitia!
-  </p>
+  <div class="text-center w-100" *ngIf="!result">
+    ¿No realizaste una cotización aún?
+  </div>
+  <div *ngIf="result" class="w-100">
+      <div class="d-flex justify-content-around w-100" style="margin-top: 10px;">
+        <b style="width: 20%; text-align: center">Marca</b>
+        <b style="width: 20%; text-align: center">Paquete</b>
+        <b style="width: 20%; text-align: center">Cuotas</b>
+        <b style="width: 20%; text-align: center">Precio</b>
+        <b style="width: 20%; text-align: center">Acciones</b>
+      </div>
+      <div class="d-flex justify-content-around w-100" style="margin-top: 10px;">
+        <b style="width: 20%; text-align: center">Fiat</b>
+        <b style="width: 20%; text-align: center">Full</b>
+        <b style="width: 20%; text-align: center">3</b>
+        <b style="width: 20%; text-align: center">15600</b>
+        <b style="width: 20%; text-align: center">Acciones</b>
+      </div>
+  </div>
 </div>

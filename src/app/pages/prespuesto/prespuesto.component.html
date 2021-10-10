@@ -4,17 +4,17 @@
     <div class="section w-75" id="toggle-section">
         <div class="box-single">
             <app-cabecera-con-acciones></app-cabecera-con-acciones>
-            <div class="d-flex justify-content-between flex-wrap-mobile m-20 gap-10">
-                <div class="w-25 article-card">
+            <div class="d-flex justify-content-between flex-wrap-mobile m-20 gap-20">
+                <div class="w-25 article-card filter-shadow">
                     <app-registro-estadistics-chart></app-registro-estadistics-chart>
                 </div>
-                <div class="w-75 article-card">
+                <div class="w-75 article-card filter-shadow">
                     <app-registro-actual></app-registro-actual>
                 </div>
             </div>
         </div>
     </div>
-    <div class="create w-25 border-left" id="toggle-create">
+    <div class="create w-25" id="toggle-create">
         <div class="toggle-create" (click)="toggleCreate()">
             <i class='bx bx-chevron-right'></i>
         </div>
