@@ -3,33 +3,46 @@
     <span (click)="deleteAlert()">X</span>
 </div>
 <div class="article">
-    <div class="body">
+    <form class="body" [formGroup]="formulario" (ngSubmit)="SendResult()">
         <div class="row">
             <div class="form-group col-3">
-                <label><i class='bx bxs-carousel text-info' style="margin-right: 5px; font-size: 1.2em;"></i> Seleccioná tu marca</label>
-                <select name="cars" id="cars" [(ngModel)]="marca" (change)="MarcaSelected()" >
-                    <option *ngFor="let option of options" [value]="option.value"> {{ option.label }}</option>
-                  </select>
+                <label class="d-flex" [class.invalid]="!formulario.get('marca')?.valid">
+                    <i class='bx bxs-carousel text-info' style="margin-right: 5px; font-size: 1.2em;"></i> 
+                    Seleccioná tu marca 
+                </label>
+                <select name="cars" id="cars" (change)="MarcaSelected()" formControlName="marca">
+                    <option *ngFor="let option of options" [value]="option.value" [selected]="option.selected" > {{ option.label }}</option>
+                </select>
             </div>
             <div class="form-group col-3">
-                <label><i class='bx bxs-component text-info' style="margin-right: 5px; font-size: 1.2em;"></i> Seleccioná el paquete</label>
-                <select name="cars" id="cars" [(ngModel)]="paquete">
-                    <option value="Default" selected >-- Seleccionar --</option>
+                <label class="d-flex" [class.invalid]="!formulario.get('paquete')?.valid">
+                    <i class='bx bxs-component text-info' style="margin-right: 5px; font-size: 1.2em;"></i>
+                    Seleccioná el paquete
+                </label>
+                <select name="cars" id="cars"  formControlName="paquete">
+                    <option value="Default" selected>-- Seleccionar --</option>
                     <option value="Full">Full</option>
                     <option value="Base">Base</option>
-                  </select>
+                </select>
+                <!--  -->
             </div>
             <div class="form-group col-3">
-                <label><i class='bx bxs-calculator text-info' style="margin-right: 5px; font-size: 1.2em;"></i> Cuotas - Interes
-                    <span [ngStyle]="{ 'color': interes != '0' ? 'red' : 'grey' }">{{ interes }}%</span>
+                <label class="d-flex" [class.invalid]="!formulario.get('cuotas')?.valid">
+                    <i class='bx bxs-calculator text-info' style="margin-right: 5px; font-size: 1.2em;"></i> 
+                    Cuotas - Interes 
+                    <span style="margin-left: 5px;" [ngStyle]="{ 'color': interes != '0' ? 'red' : 'grey' }"> {{ interes }}%</span>
                 </label>
-                <select name="cars" id="cars" [(ngModel)]="cuotas" (change)="coutasSelected()">
-                    <option *ngFor="let cuota of cuotasList" [value]="cuota.value">{{ cuota.label }}</option>
-                  </select>
+                <select name="cars" id="cars" formControlName="cuotas">
+                    <!-- (change)="coutasSelected()" -->
+                    <!-- [(ngModel)]="cuotas" -->
+                    <option *ngFor="let cuota of cuotasList" [value]="cuota.value" [selected]="cuota.selected">{{ cuota.label }}</option>
+                </select>
             </div>
             <div class="form-group col-3 m-10">
-                <button class="button" (click)="SendResult()"><i class='bx bxs-edit-alt' style="margin-right: 5px; font-size: 22px;"></i>Cotizar</button>
+                <!-- [disabled]="!formulario.valid" -->
+                <button class="button" type="submit"><i class='bx bxs-edit-alt'
+                        style="margin-right: 5px; font-size: 22px;"></i>Cotizar</button>
             </div>
         </div>
-    </div>
+    </form>
 </div>

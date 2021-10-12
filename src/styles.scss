@@ -149,6 +149,7 @@ body{
 
 /* ------------------ */
 
+
 .article-card{
     border-radius: var(--br-box);
     background-color: var(--bg-color);
@@ -319,7 +320,7 @@ body{
     }
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 1024px){
 
     .w-5,
     .w-25,
