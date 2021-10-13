@@ -21,12 +21,8 @@ export class FormularioComponent implements OnInit {
   });
 
   titleCabecera:string = "Titulo de prueba de cabecera";
-  // marca: string = "Default";
-  // paquete: string = "Default";
-  // cuotas: string = "Default";
   interes: string = '0';
   precio: string = "0";
-
   options: any[] = [
     {
       selected: "selected",
@@ -87,7 +83,7 @@ export class FormularioComponent implements OnInit {
   constructor(
     private cotizadorService: CotizadorPrespuestoService,
     private fb: FormBuilder,
-    private cdr: ChangeDetectorRef) 
+    private cdr: ChangeDetectorRef)
   { }
 
   ngOnInit(): void {
@@ -97,69 +93,47 @@ export class FormularioComponent implements OnInit {
     this.cotizadorService.setMarcaSelected(marcas[this.formulario.get("marca")?.value]["img"]);
   }
 
-  // coutasSelected(){
-  //   const nombre = this.cuotas == "Default" ?
-  //     cuotas[this.cuotas.toLowerCase()]["value"].toLowerCase() :
-  //     cuotas[this.cuotas]["value"];
-  //   this.interes = cuotas[nombre]["interes"];
-  // }
-
   SendResult(){
 
-    if(this.formulario.get("marca")?.value == "Default"){
+    let marcaValid = this.formulario.get("marca")?.value != "Default",
+    paqueteValid = this.formulario.get("paquete")?.value != "Default",
+    cuotasValid = this.formulario.get("cuotas")?.value != "Default"
+
+    if(!marcaValid){
       this.formulario.get("marca")?.setErrors({ error: "No hay marca seleccionada"});
+      this.cotizadorService.setResultCotizacion(false);
     }
 
-    if(this.formulario.get("paquete")?.value == "Default"){
+    if(!paqueteValid){
       this.formulario.get("paquete")?.setErrors({ error: "No hay paquete seleccionada"});
+      this.cotizadorService.setResultCotizacion(false);
     }
 
-    if(this.formulario.get("cuotas")?.value == "Default"){
+    if(!cuotasValid){
       this.formulario.get("cuotas")?.setErrors({ error: "No hay cuota seleccionada"});
+      this.cotizadorService.setResultCotizacion(false);
     }
 
-    // this.cdr.detectChanges();
+    if(marcaValid && paqueteValid && cuotasValid){
+      this.cdr.detectChanges();
       const descripcionCuotasInput = this.formulario.get("cuotas")?.value == "Default" ?
         cuotas[this.formulario.get("cuotas")?.value.toLowerCase()]["value"].toLowerCase() :
         cuotas[this.formulario.get("cuotas")?.value]["value"];
       this.interes = cuotas[descripcionCuotasInput]["interes"];
 
-    let option = this.options.find(op => op.label == marcas[this.formulario.get("marca")?.value]["nombre"])
-    let cotizacion = new Cotizacion({
-      marca: this.precio = marcas[this.formulario.get("marca")?.value]["precio"],
-      cuotas: this.formulario.get("cuotas")?.value,
-      paquete: this.formulario.get("paquete")?.value,
-      interes: this.interes,
-      precio: option != undefined ? option.precio : "0"
-    });
-    this.cotizadorService.setCotizacion(cotizacion);
-
-    // if(this.validateCotizacion(cotizacion)){
-    //   this.cotizadorService.setResultCotizacion(true);
-    //   this.alert = false;
-    // }
-    // else{
-    //   this.cotizadorService.setResultCotizacion(false);
-    //   const alert =  document.getElementById("alert-error");
-    // if(alert) alert.style.display = "flex";
-    //   this.alert = true;
-    // }
-  }
-
-  validateCotizacion(cotizacion: Cotizacion): boolean{
-    if(cotizacion.cuotas == "Default" ||
-       cotizacion.interes == '0' ||
-       cotizacion.paquete == "Default" ||
-       cotizacion.marca == "Default")
-    {
-      return false;
+      let option = this.options.find(op => op.label == marcas[this.formulario.get("marca")?.value]["nombre"])
+      let cotizacion = new Cotizacion({
+        marca: marcas[this.formulario.get("marca")?.value]["nombre"],
+        cuotas: this.formulario.get("cuotas")?.value,
+        paquete: this.formulario.get("paquete")?.value,
+        interes: this.interes,
+        precio: option != undefined ? (parseInt(option.precio) * parseInt(this.formulario.get("cuotas")?.value)).toString() : "0"
+      });
+      this.cotizadorService.setCotizacion(cotizacion);
+      this.cotizadorService.setResultCotizacion(true);
     }
-    return true;
+
   }
 
-  deleteAlert(){
-    const alert =  document.getElementById("alert-error");
-    if(alert) alert.style.display = "none";
-  }
 
 }

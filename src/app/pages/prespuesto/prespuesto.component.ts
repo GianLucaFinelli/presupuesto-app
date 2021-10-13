@@ -22,7 +22,6 @@ export class PrespuestoComponent implements OnInit {
   ngOnInit(): void {
     this.cotizadorService.setMarcaSelected(imagesMarcas.default);
     this.cotizadorService.resultCotizacion.subscribe( (next: boolean) => {
-      console.log(next);
       this.enabled = next;
     });
 

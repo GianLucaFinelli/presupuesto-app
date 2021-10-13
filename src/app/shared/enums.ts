@@ -47,3 +47,4 @@ export const cuotas: any = {
         interes: 0
     },
 }
+

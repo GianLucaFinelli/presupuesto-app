@@ -22,12 +22,12 @@ export class RegistroActualComponent implements OnInit {
 
     this.cotizadorService.cotizacion.subscribe( (next: Cotizacion) => {
       this.cotizacion = next;
-      console.log(this.cotizacion.Cuotas(this.cotizacion));
-      this.cuotas = this.cotizacion.Cuotas(this.cotizacion);
-      this.precio = 0;
-      this.cuotas.map( cuota => {
-        this.precio += cuota;
-      })
+      // console.log(this.cotizacion.Cuotas(this.cotizacion));
+      // this.cuotas = this.cotizacion.Cuotas(this.cotizacion);
+      // this.precio = 0;
+      // this.cuotas.map( cuota => {
+      //   this.precio += cuota;
+      // })
     })
   }
 }

@@ -1,6 +1,6 @@
 
 export class Cotizacion {
-    precio!: string;
+    precioBase!: string;
     cuotas!: string;
     interes!: string;
     marca!: string;
@@ -10,7 +10,7 @@ export class Cotizacion {
      *
      */
     constructor(obj: any) {
-        this.precio = obj.precio;
+        this.precioBase = obj.precio;
         this.cuotas = obj.cuotas;
         this.interes = obj.interes;
         this.marca = obj.marca;
@@ -23,11 +23,22 @@ export class Cotizacion {
     var items: number[] = [];
     var coti: Cotizacion = cotizacion;
     for(let i = 0; i < parseInt(coti.cuotas) ; i++ ){
-        let precioDividoCuotas = parseInt(coti.precio) / parseInt(coti.cuotas);
-        let interesAplicado = parseInt(coti.precio) * parseInt(coti.interes);
+        let precioDividoCuotas = parseInt(coti.precioBase) / parseInt(coti.cuotas);
+        let interesAplicado = parseInt(coti.precioBase) * parseInt(coti.interes);
         let valueWithInteres : number = parseInt((precioDividoCuotas + interesAplicado / 100).toFixed(0));
         items.push(valueWithInteres);
     }
     return items;
+  }
+
+  PrecioFinal(): number{
+    let result: number = 0;
+    for(let i = 0; i < parseInt(this.cuotas) ; i++ ){
+      let precioDividoCuotas = parseInt(this.precioBase) / parseInt(this.cuotas);
+      let interesAplicado = parseInt(this.precioBase) * parseInt(this.interes);
+      let valueWithInteres : number = parseInt((precioDividoCuotas + interesAplicado / 100).toFixed(0));
+      result += valueWithInteres;
+    }
+    return result;
   }
 }

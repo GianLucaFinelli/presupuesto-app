@@ -1,14 +1,10 @@
-<div class="form-group col-3 alert" id="alert-error" [style]="{ 'display': alert ? 'block' : 'none' }">
-    ¡Complete todos los campos...!
-    <span (click)="deleteAlert()">X</span>
-</div>
 <div class="article">
     <form class="body" [formGroup]="formulario" (ngSubmit)="SendResult()">
         <div class="row">
             <div class="form-group col-3">
                 <label class="d-flex" [class.invalid]="!formulario.get('marca')?.valid">
-                    <i class='bx bxs-carousel text-info' style="margin-right: 5px; font-size: 1.2em;"></i> 
-                    Seleccioná tu marca 
+                    <i class='bx bxs-carousel text-info' style="margin-right: 5px; font-size: 1.2em;"></i>
+                    Seleccioná tu marca
                 </label>
                 <select name="cars" id="cars" (change)="MarcaSelected()" formControlName="marca">
                     <option *ngFor="let option of options" [value]="option.value" [selected]="option.selected" > {{ option.label }}</option>
@@ -28,8 +24,8 @@
             </div>
             <div class="form-group col-3">
                 <label class="d-flex" [class.invalid]="!formulario.get('cuotas')?.valid">
-                    <i class='bx bxs-calculator text-info' style="margin-right: 5px; font-size: 1.2em;"></i> 
-                    Cuotas - Interes 
+                    <i class='bx bxs-calculator text-info' style="margin-right: 5px; font-size: 1.2em;"></i>
+                    Cuotas - Interes
                     <span style="margin-left: 5px;" [ngStyle]="{ 'color': interes != '0' ? 'red' : 'grey' }"> {{ interes }}%</span>
                 </label>
                 <select name="cars" id="cars" formControlName="cuotas">
@@ -40,7 +36,7 @@
             </div>
             <div class="form-group col-3 m-10">
                 <!-- [disabled]="!formulario.valid" -->
-                <button class="button" type="submit"><i class='bx bxs-edit-alt'
+                <button class="button" type="submit" [disabled]="!formulario.valid"><i class='bx bxs-edit-alt'
                         style="margin-right: 5px; font-size: 22px;"></i>Cotizar</button>
             </div>
         </div>
