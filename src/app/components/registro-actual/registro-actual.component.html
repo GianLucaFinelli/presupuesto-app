@@ -3,8 +3,8 @@
   <i class="bx bx-dots-horizontal-rounded article-icon"></i>
 </div>
 <div class="d-flex p-10">
-  <div class="text-center w-100" *ngIf="!result">
-    ¿No realizaste una cotización aún?
+  <div class="text-center w-100 p-20 d-flex align-center justify-content-center" *ngIf="!result">
+    <i class='bx bx-dollar-circle' style="margin-right: 5px; font-size: 25px;"></i> <span>¿No realizaste una cotización aún?</span>
   </div>
 
   <div
@@ -12,20 +12,20 @@
     class="d-flex justify-content-around w-100"
   >
     <div class="item-value w-25">
-      <b class="item-title">Marca</b>
+      <b class="item-title"><i class='bx bx-copyright' style="margin-right: 5px;"></i>Marca</b>
       <b class="item-subtitle">{{ cotizacion.marca }}</b>
     </div>
     <div class="item-value w-25">
-      <b class="item-title">Paquete</b>
+      <b class="item-title"><i class='bx bxs-package' style="margin-right: 5px;"></i>Paquete</b>
       <b class="item-subtitle"><span class="badge badge-primary">{{ cotizacion.paquete }}</span></b>
     </div>
     <div class="item-value w-25">
-      <b class="item-title">Cuotas</b>
+      <b class="item-title"><i class='bx bxs-credit-card-front' style="margin-right: 5px;"></i>Cuotas</b>
       <b class="item-subtitle">{{ cotizacion.cuotas }}</b>
     </div>
     <div class="item-value w-25">
-      <b class="item-title">Precio</b>
-      <b class="item-subtitle">{{ cotizacion.PrecioFinal() }}</b>
+      <b class="item-title"><i class='bx bxs-dollar-circle' style="margin-right: 5px;"></i>Precio Final</b>
+      <b class="item-subtitle">{{ cotizacion.PrecioFinal() | currency }}</b>
     </div>
   </div>
 </div>

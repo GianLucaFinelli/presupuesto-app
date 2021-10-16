@@ -31,13 +31,21 @@ export class Cotizacion {
     return items;
   }
 
+  // PrecioFinal(): number{
+  //   let result: number = 0;
+  //   for(let i = 0; i < parseInt(this.cuotas) ; i++ ){
+  //     let precioDividoCuotas = parseInt(this.precioBase) / parseInt(this.cuotas);
+  //     let interesAplicado = parseInt(this.precioBase) * parseInt(this.interes);
+  //     let valueWithInteres : number = parseInt((precioDividoCuotas + interesAplicado / 100).toFixed(0));
+  //     result += valueWithInteres;
+  //   }
+  //   return result;
+  // }
+
   PrecioFinal(): number{
-    let result: number = 0;
-    for(let i = 0; i < parseInt(this.cuotas) ; i++ ){
-      let precioDividoCuotas = parseInt(this.precioBase) / parseInt(this.cuotas);
-      let interesAplicado = parseInt(this.precioBase) * parseInt(this.interes);
-      let valueWithInteres : number = parseInt((precioDividoCuotas + interesAplicado / 100).toFixed(0));
-      result += valueWithInteres;
+    let result: number =  parseInt(this.precioBase) + ( parseInt(this.precioBase) * parseInt(this.interes) / 100);
+    if(this.paquete == "Full"){
+      return result + 90000;
     }
     return result;
   }

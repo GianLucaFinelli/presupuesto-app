@@ -34,19 +34,19 @@ export class FormularioComponent implements OnInit {
       selected: '',
       value: marcas["Fiat"]["nombre"],
       label: marcas["Fiat"]["nombre"],
-      precio: "14560"
+      precio: "145600"
     },
     {
       selected: '',
       value: marcas["Peugeot"]["nombre"],
       label: marcas["Peugeot"]["nombre"],
-      precio: "45908"
+      precio: "459080"
     },
     {
       selected: '',
       value: marcas["Volkswagen"]["nombre"],
       label: marcas["Volkswagen"]["nombre"],
-      precio: "36200"
+      precio: "362000"
     },
   ];
 
@@ -127,7 +127,7 @@ export class FormularioComponent implements OnInit {
         cuotas: this.formulario.get("cuotas")?.value,
         paquete: this.formulario.get("paquete")?.value,
         interes: this.interes,
-        precio: option != undefined ? (parseInt(option.precio) * parseInt(this.formulario.get("cuotas")?.value)).toString() : "0"
+        precio: option != undefined ? parseInt(option.precio) : "0"
       });
       this.cotizadorService.setCotizacion(cotizacion);
       this.cotizadorService.setResultCotizacion(true);

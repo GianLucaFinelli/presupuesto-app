@@ -154,7 +154,7 @@ body{
 
 .badge{
     border-radius: var(--br-box);
-    padding: 5px 8px;
+    padding: 3px 15px;
 }
 
 .badge-primary{
@@ -288,6 +288,10 @@ body{
 
 /* ----------------------- */
 
+.w-2{
+    transition: 0.3s all ease;
+    width: 2%;
+}
 .w-5{
     transition: 0.3s all ease;
     width: 5%;
@@ -307,6 +311,10 @@ body{
 .w-95{
     transition: 0.3s all ease;
     width: 95%;
+}
+.w-98{
+    transition: 0.3s all ease;
+    width: 98%;
 }
 .w-100{
     transition: 0.3s all ease;

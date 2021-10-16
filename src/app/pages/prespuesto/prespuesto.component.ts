@@ -42,7 +42,6 @@ export class PrespuestoComponent implements OnInit {
         this.toggleCreateFlag = !this.toggleCreateFlag;
         aside?.classList.add("create-active-responsive");
         aside?.classList.add("bottom-reset");
-  
       }
       else{
         this.toggleCreateFlag = !this.toggleCreateFlag;
@@ -53,16 +52,16 @@ export class PrespuestoComponent implements OnInit {
     else{
       if(this.toggleCreateFlag){
         this.toggleCreateFlag = !this.toggleCreateFlag;
-        section?.classList.add("w-95");
+        section?.classList.add("w-98");
         conteidoAside?.classList.add("d-none");
         aside?.classList.remove("w-25");
-        aside?.classList.add("w-5");
+        aside?.classList.add("w-2");
       }
       else{
         this.toggleCreateFlag = !this.toggleCreateFlag;
-        section?.classList.remove("w-95");
+        section?.classList.remove("w-98");
         conteidoAside?.classList.remove("d-none");
-        aside?.classList.remove("w-5");
+        aside?.classList.remove("w-2");
         aside?.classList.add("w-25");
       }
     }
