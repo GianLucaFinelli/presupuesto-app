@@ -11,7 +11,6 @@
     .section{
         position: relative;
         padding: 0px 15px;
-        height:1500px;
     }
     .w-2{
         transition: 0.3s all ease;
@@ -42,8 +41,7 @@
             display: flex;
             flex-direction: column;
             justify-content: baseline;
-            top: 0;
-            position: -webkit-sticky;
+            top: 60px;
             position: sticky;
         }
         .toggle-create{

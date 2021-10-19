@@ -5,6 +5,7 @@ import { Cotizacion } from 'src/app/shared/models/cotizacion';
 
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
+import { LocalstorageCotizacionesService } from 'src/app/services/localstorage-cotizaciones.service';
 
 @Component({
   selector: 'app-formulario',
@@ -12,7 +13,6 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./formulario.component.scss']
 })
 export class FormularioComponent implements OnInit {
-
 
   formulario: FormGroup = this.fb.group({
     marca: ['Default', Validators.required, !Validators.pattern("Default")],
@@ -129,6 +129,7 @@ export class FormularioComponent implements OnInit {
         interes: this.interes,
         precio: option != undefined ? parseInt(option.precio) : "0"
       });
+      cotizacion.precioFinal = cotizacion.PrecioFinal();
       this.cotizadorService.setCotizacion(cotizacion);
       this.cotizadorService.setResultCotizacion(true);
     }

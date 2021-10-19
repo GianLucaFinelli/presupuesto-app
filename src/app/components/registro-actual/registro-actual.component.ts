@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CotizadorPrespuestoService } from 'src/app/services/cotizador-prespuesto.service';
+import { LocalstorageCotizacionesService } from 'src/app/services/localstorage-cotizaciones.service';
 import { Cotizacion } from 'src/app/shared/models/cotizacion';
 
 @Component({
@@ -9,25 +10,22 @@ import { Cotizacion } from 'src/app/shared/models/cotizacion';
 })
 export class RegistroActualComponent implements OnInit {
 
-  result : boolean = true;
-  cotizacion: Cotizacion = new Cotizacion({});
+  cotizacion: Cotizacion | null = new Cotizacion({});
   cuotas: number[] = [];
-  precio: number = 0;
 
-  constructor(private cotizadorService: CotizadorPrespuestoService) { }
+  constructor(
+    private cotizadorService: CotizadorPrespuestoService,
+    private localStorage: LocalstorageCotizacionesService) { }
+
   ngOnInit(): void {
-    this.cotizadorService.resultCotizacion.subscribe( (next: boolean) => {
-      this.result = next;
-    })
+    // this.cotizadorService.resultCotizacion.subscribe( (next: boolean) => {
+    //   this.result = next;
+    // })
 
     this.cotizadorService.cotizacion.subscribe( (next: Cotizacion) => {
       this.cotizacion = next;
-      // console.log(this.cotizacion.Cuotas(this.cotizacion));
-      // this.cuotas = this.cotizacion.Cuotas(this.cotizacion);
-      // this.precio = 0;
-      // this.cuotas.map( cuota => {
-      //   this.precio += cuota;
-      // })
+      this.cotizacion = this.localStorage.getLastCotizacion();
     })
+
   }
 }
