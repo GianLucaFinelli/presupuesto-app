@@ -11,6 +11,7 @@ export class CotizadorPrespuestoService {
 
   marcaSelected: BehaviorSubject<string> = new BehaviorSubject<string>(imagesMarcas.default);
   cotizacion : BehaviorSubject<Cotizacion> = new BehaviorSubject<Cotizacion>(new Cotizacion({}));
+  cotizacionDeleted: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   resultCotizacion : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   cuotas: BehaviorSubject<number[]> = new BehaviorSubject<number[]>([]);
 
@@ -33,14 +34,18 @@ export class CotizadorPrespuestoService {
   }
 
   getId() : number{
-    let id: number = parseInt(JSON.stringify(window.localStorage.getItem("id"))) || 0;
+    let hasId = window.localStorage.hasOwnProperty('id');
+    let id = 0;
+    if(hasId) {
+      id = JSON.parse(JSON.stringify(window.localStorage.getItem('id')));
+    }
     this.setId(id);
     return id;
   }
 
   setId(increment: number){
     increment++;
-    window.localStorage.setItem("id", increment.toString());
+    window.localStorage.setItem("id", JSON.stringify(increment));
   }
 
 }

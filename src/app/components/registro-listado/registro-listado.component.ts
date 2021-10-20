@@ -10,15 +10,7 @@ import { Cotizacion } from 'src/app/shared/models/cotizacion';
 })
 export class RegistroListadoComponent implements OnInit {
 
-  cotizaciones: Cotizacion[] = [
-    {
-      precio: "100000",
-      marca:"Fiat",
-      cuotas:"3",
-      paquete:"Full",
-      interes:"3"
-    } as Cotizacion
-  ];
+  cotizaciones: Cotizacion[] = [];
   constructor(
     private cotizadorService: CotizadorPrespuestoService,
     private localStorage: LocalstorageCotizacionesService
@@ -30,7 +22,13 @@ export class RegistroListadoComponent implements OnInit {
     // si cambia el ultimo resultado se actualiza el listado
     this.cotizadorService.cotizacion.subscribe( (changeLastRegister) => {
       this.cotizaciones = this.localStorage.getAll();
+      console.log(this.cotizaciones)
     })
+  }
+
+  deleteCotizacion(cotizacion: Cotizacion) {
+    // borra la cotizacion y devuelve el listado actualizado
+    this.cotizaciones = this.localStorage.deleteCotizacion(cotizacion);
   }
 
 }

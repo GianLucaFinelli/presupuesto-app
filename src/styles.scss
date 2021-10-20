@@ -3,6 +3,7 @@
 :root{
     --color-gray: #F5F3F3;
     --color-dark-gray: #B9B9B9;
+    --color-secondary: #6d6d6d;
     --bg-color: rgb(255, 255, 255);
     --bg-box-color: rgb(240, 240, 240);
     --border-box-color: #e1e1e1;
@@ -37,6 +38,10 @@ body{
     font-family: 'Oxygen', sans-serif;
     font-size: 14px;
     transition: 0.3s all ease;
+}
+
+.text-secondary{
+    color: var(--color-secondary);
 }
 
 .gap-10{
