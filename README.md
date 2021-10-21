@@ -2,26 +2,23 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.3.
 
+<div align="left">
+<img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="angular">
+<img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white" alt="ANGULAR">
+<img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white" alt="FIGMA">
+</div>
+<img src="https://img.shields.io/github/last-commit/GianLucaFinelli/presupuesto-app/master?color=%2335badb&logo=git&logoColor=git&style=for-the-badge" alt="Last_commit">
+
+- El objetivo de este proyecto es mostrar un diseño enfocado en la UI poniendo en foco las habilidades como desarrollador Frontend. Próximamente tendrá un refactor en cuanto a usabilidad. Poniendo en foco las acciones intuitivas.
+- Los componentes son desarrollados de manera manual, sin ayuda de frameworks como material o primeNG, ni siquiera bootstrap
+- Para los iconos se utiliza <a href="https://boxicons.com/">Boxicons.com</a>
+
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+para correrlo en un entorno local, se debera ejecutar el siguiente comando en consola.
 
-## Code scaffolding
+```
+ng serve --o
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+ Correra automaticamente en el puerto `http://localhost:4200/`
