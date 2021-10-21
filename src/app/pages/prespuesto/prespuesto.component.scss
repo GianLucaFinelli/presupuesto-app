@@ -191,6 +191,9 @@
 @media screen and (max-width: 690px){
 
     .create{
+        .create-contenedor{
+            top: 0px;
+        }
         display: flex !important;
         .toggle-create{
             left: 45% !important;
