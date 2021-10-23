@@ -86,4 +86,8 @@ export class FormularioComponent implements OnInit {
   }
 
 
+  validStateCuotas(): boolean{
+    return !this.formulario.get('cuotas')?.valid;
+  }
+
 }

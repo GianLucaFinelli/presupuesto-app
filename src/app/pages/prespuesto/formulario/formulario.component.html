@@ -23,16 +23,24 @@
                 <!--  -->
             </div>
             <div class="form-group col-3">
-                <label class="d-flex" [class.invalid]="!formulario.get('cuotas')?.valid">
+                <pres-select
+                    [formulario]="formulario"
+                    labelName="Cuotas - Interes"
+                    formControlName="cuotas"
+                    [options]="cuotasList"
+                    > 
+                <!-- [labelStyle]="'color': interes != '0' ? 'red' : 'grey'"
+                    [labelKey]="interes"
+                    labelBefore="%" -->
+                </pres-select>
+                <!-- <label class="d-flex" [class.invalid]="!formulario.get('cuotas')?.valid">
                     <i class='bx bxs-calculator text-info' style="margin-right: 5px; font-size: 1.2em;"></i>
                     Cuotas - Interes
                     <span style="margin-left: 5px;" [ngStyle]="{ 'color': interes != '0' ? 'red' : 'grey' }"> {{ interes }}%</span>
                 </label>
                 <select formControlName="cuotas">
-                    <!-- (change)="coutasSelected()" -->
-                    <!-- [(ngModel)]="cuotas" -->
                     <option *ngFor="let cuota of cuotasList" [value]="cuota.value" [selected]="cuota.selected">{{ cuota.label }}</option>
-                </select>
+                </select> -->
             </div>
             <div class="form-group col-3 m-10">
                 <!-- [disabled]="!formulario.valid" -->
