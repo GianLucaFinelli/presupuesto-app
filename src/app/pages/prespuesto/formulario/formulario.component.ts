@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CotizadorPrespuestoService } from 'src/app/services/cotizador-prespuesto.service';
-import { cuotas, marcas } from 'src/app/shared/enums';
+import { cuotas, cuotasOptions, marcas, marcasOptions } from 'src/app/shared/enums';
 import { Cotizacion } from 'src/app/shared/models/cotizacion';
 
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -23,60 +23,9 @@ export class FormularioComponent implements OnInit {
   titleCabecera:string = "Titulo de prueba de cabecera";
   interes: string = '0';
   precio: string = "0";
-  options: any[] = [
-    {
-      selected: "selected",
-      value:  marcas["Default"]["nombre"],
-      label: "-- Seleccionar --",
-      precio: "0"
-    },
-    {
-      selected: '',
-      value: marcas["Fiat"]["nombre"],
-      label: marcas["Fiat"]["nombre"],
-      precio: "145600"
-    },
-    {
-      selected: '',
-      value: marcas["Peugeot"]["nombre"],
-      label: marcas["Peugeot"]["nombre"],
-      precio: "459080"
-    },
-    {
-      selected: '',
-      value: marcas["Volkswagen"]["nombre"],
-      label: marcas["Volkswagen"]["nombre"],
-      precio: "362000"
-    },
-  ];
+  marcasList: any[] = marcasOptions;
 
-  cuotasList: any = [
-    {
-      selected: true,
-      value: cuotas["default"]["value"],
-      label: "-- Seleccionar --",
-    },
-    {
-      selected: false,
-      value: cuotas["3"]["value"],
-      label: cuotas["3"]["value"],
-    },
-    {
-      selected: false,
-      value: cuotas["6"]["value"],
-      label: cuotas["6"]["value"],
-    },
-    {
-      selected: false,
-      value: cuotas["9"]["value"],
-      label: cuotas["9"]["value"],
-    },
-    {
-      selected: false,
-      value: cuotas["12"]["value"],
-      label: cuotas["12"]["value"],
-    }
-  ]
+  cuotasList: any = cuotasOptions;
 
   alert: boolean = false;
 
@@ -121,7 +70,7 @@ export class FormularioComponent implements OnInit {
         cuotas[this.formulario.get("cuotas")?.value]["value"];
       this.interes = cuotas[descripcionCuotasInput]["interes"];
 
-      let option = this.options.find(op => op.label == marcas[this.formulario.get("marca")?.value]["nombre"])
+      let option = this.marcasList.find(op => op.label == marcas[this.formulario.get("marca")?.value]["nombre"])
       let cotizacion = new Cotizacion({
         marca: marcas[this.formulario.get("marca")?.value]["nombre"],
         cuotas: this.formulario.get("cuotas")?.value,

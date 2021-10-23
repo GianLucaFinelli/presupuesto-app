@@ -6,8 +6,8 @@
                     <i class='bx bxs-carousel text-info' style="margin-right: 5px; font-size: 1.2em;"></i>
                     Seleccioná tu marca
                 </label>
-                <select name="cars" id="cars" (change)="MarcaSelected()" formControlName="marca">
-                    <option *ngFor="let option of options" [value]="option.value" [selected]="option.selected" > {{ option.label }}</option>
+                <select (change)="MarcaSelected()" formControlName="marca">
+                        <option *ngFor="let marc of marcasList" [value]="marc.value" [selected]="marc.selected" > {{ marc.label }}</option>
                 </select>
             </div>
             <div class="form-group col-3">
@@ -15,7 +15,7 @@
                     <i class='bx bxs-component text-info' style="margin-right: 5px; font-size: 1.2em;"></i>
                     Seleccioná el paquete
                 </label>
-                <select name="cars" id="cars"  formControlName="paquete">
+                <select  formControlName="paquete">
                     <option value="Default" selected>-- Seleccionar --</option>
                     <option value="Full">Full</option>
                     <option value="Base">Base</option>
@@ -28,7 +28,7 @@
                     Cuotas - Interes
                     <span style="margin-left: 5px;" [ngStyle]="{ 'color': interes != '0' ? 'red' : 'grey' }"> {{ interes }}%</span>
                 </label>
-                <select name="cars" id="cars" formControlName="cuotas">
+                <select formControlName="cuotas">
                     <!-- (change)="coutasSelected()" -->
                     <!-- [(ngModel)]="cuotas" -->
                     <option *ngFor="let cuota of cuotasList" [value]="cuota.value" [selected]="cuota.selected">{{ cuota.label }}</option>

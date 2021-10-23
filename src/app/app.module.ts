@@ -6,15 +6,15 @@ import { AppComponent } from './app.component';
 import { PrespuestoComponent } from './pages/prespuesto/prespuesto.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
-import { FormularioComponent } from './components/formulario/formulario.component';
 import { CotizacionComponent } from './components/cotizacion/cotizacion.component';
-import { ResultadoComponent } from './components/resultado/resultado.component';
 import { CabeceraConAccionesComponent } from './components/cabecera-con-acciones/cabecera-con-acciones.component';
-import { RegistroActualComponent } from './components/registro-actual/registro-actual.component';
-import { RegistroListadoComponent } from './components/registro-listado/registro-listado.component';
-import { RegistroEstadisticsChartComponent } from './components/registro-estadistics-chart/registro-estadistics-chart.component';
 
 import { ChartsModule } from 'ng2-charts';
+import { FormularioComponent } from './pages/prespuesto/formulario/formulario.component';
+import { RegistroListadoComponent } from './pages/prespuesto/registro-listado/registro-listado.component';
+import { RegistroActualComponent } from './pages/prespuesto/registro-actual/registro-actual.component';
+import { RegistroEstadisticsChartComponent } from './pages/prespuesto/registro-estadistics-chart/registro-estadistics-chart.component';
+import { PresSelectComponent } from './components/pres-select/pres-select.component';
 
 @NgModule({
   declarations: [
@@ -24,11 +24,12 @@ import { ChartsModule } from 'ng2-charts';
     GalleryComponent,
     FormularioComponent,
     CotizacionComponent,
-    ResultadoComponent,
+    PrespuestoComponent,
     CabeceraConAccionesComponent,
     RegistroActualComponent,
     RegistroListadoComponent,
-    RegistroEstadisticsChartComponent
+    RegistroEstadisticsChartComponent,
+    PresSelectComponent
   ],
   imports: [
     BrowserModule,

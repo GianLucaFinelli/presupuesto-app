@@ -48,3 +48,61 @@ export const cuotas: any = {
     },
 }
 
+
+// -----------------
+
+export const marcasOptions: any = [
+    {
+      selected: "selected",
+      value:  marcas["Default"]["nombre"],
+      label: "-- Seleccionar --",
+      precio: "0"
+    },
+    {
+      selected: '',
+      value: marcas["Fiat"]["nombre"],
+      label: marcas["Fiat"]["nombre"],
+      precio: "145600"
+    },
+    {
+      selected: '',
+      value: marcas["Peugeot"]["nombre"],
+      label: marcas["Peugeot"]["nombre"],
+      precio: "459080"
+    },
+    {
+      selected: '',
+      value: marcas["Volkswagen"]["nombre"],
+      label: marcas["Volkswagen"]["nombre"],
+      precio: "362000"
+    },
+  ];
+
+
+  export const cuotasOptions: any = [
+    {
+      selected: true,
+      value: cuotas["default"]["value"],
+      label: "-- Seleccionar --",
+    },
+    {
+      selected: false,
+      value: cuotas["3"]["value"],
+      label: cuotas["3"]["value"],
+    },
+    {
+      selected: false,
+      value: cuotas["6"]["value"],
+      label: cuotas["6"]["value"],
+    },
+    {
+      selected: false,
+      value: cuotas["9"]["value"],
+      label: cuotas["9"]["value"],
+    },
+    {
+      selected: false,
+      value: cuotas["12"]["value"],
+      label: cuotas["12"]["value"],
+    }
+  ];
