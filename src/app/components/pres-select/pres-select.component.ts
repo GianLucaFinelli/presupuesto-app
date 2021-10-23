@@ -1,12 +1,12 @@
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, FormsModule } from '@angular/forms';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { ControlValueAccessor, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'pres-select',
   templateUrl: './pres-select.component.html',
   styleUrls: ['./pres-select.component.scss']
 })
-export class PresSelectComponent implements OnInit {
+export class PresSelectComponent implements ControlValueAccessor, OnInit{
 
  /* --------------------
   * | TODO:            |
@@ -20,37 +20,52 @@ export class PresSelectComponent implements OnInit {
 
   @Input() formulario!: FormGroup;
   @Input() formControlName: string = "";
-  @Input() formularioControlState: boolean = false;
+  @Input() formularioControlState: boolean = true;
   @Input() hasMethodChange: boolean = false;
   @Input() options : any[] = [];
   @Input() labelName: string = "";
   @Input() labelStyle: string = "'color': interes != '0' ? 'red' : 'grey'";
   @Input() labelKey!: string;
-  @Input() labelBefore:string = ""; 
+  @Input() labelBefore:string = "";
 
   @Output() optionSelectedMethod : EventEmitter<boolean> = new EventEmitter<boolean>();
-  
-  constructor(private cdr: ChangeDetectorRef) { }
+
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private fb: FormBuilder) { }
+
 
   ngOnInit(): void {
     this.cdr.detectChanges();
+    this.formularioControlState = !this.formulario.get(`${[this.formControlName]}`)?.valid;
   }
 
   optionSelected(){
     this.optionSelectedMethod.emit(true);
     this.formularioControlState = !this.formulario.get(`${[this.formControlName]}`)?.valid;
-    console.log(this.formularioControlState)
   }
 
   selectValid(){
     if(this.formulario.get(`${[this.formControlName]}`)?.value == "Default"){
       this.formularioControlState = true;
-      console.log("invalido")
     }
     else{
       this.formularioControlState = false;
     }
-    console.log("valido")
+  }
+
+  onChange: any = () => {}
+  onTouch: any = () => {}
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+  registerOnTouched(fn: any): void {
+    this.onTouch = fn;
+  }
+
+  // d) copy paste this code
+  writeValue(input: string) {
+    // TODO
   }
 
 }

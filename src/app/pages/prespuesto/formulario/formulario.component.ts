@@ -1,11 +1,10 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CotizadorPrespuestoService } from 'src/app/services/cotizador-prespuesto.service';
-import { cuotas, cuotasOptions, marcas, marcasOptions } from 'src/app/shared/enums';
+import { cuotas, cuotasOptions, marcas, marcasOptions, paqueteList } from 'src/app/shared/enums';
 import { Cotizacion } from 'src/app/shared/models/cotizacion';
 
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
-import { LocalstorageCotizacionesService } from 'src/app/services/localstorage-cotizaciones.service';
 
 @Component({
   selector: 'app-formulario',
@@ -13,6 +12,13 @@ import { LocalstorageCotizacionesService } from 'src/app/services/localstorage-c
   styleUrls: ['./formulario.component.scss']
 })
 export class FormularioComponent implements OnInit {
+
+  marcaLabel: string = "Seleccioná tu marca";
+  marcaState: boolean = false;
+  paqueteLabel: string = "Seleccioná tu paquete";
+  paqueteState: boolean = false;
+  cuotasLabel: string = "Cantidad de cuotas";
+  cuotasState: boolean = false;
 
   formulario: FormGroup = this.fb.group({
     marca: ['Default', Validators.required, !Validators.pattern("Default")],
@@ -24,7 +30,7 @@ export class FormularioComponent implements OnInit {
   interes: string = '0';
   precio: string = "0";
   marcasList: any[] = marcasOptions;
-
+  paqueteList: any[] = paqueteList;
   cuotasList: any = cuotasOptions;
 
   alert: boolean = false;
@@ -38,7 +44,7 @@ export class FormularioComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  MarcaSelected(){
+  MarcaSelected(result : any){
     this.cotizadorService.setMarcaSelected(marcas[this.formulario.get("marca")?.value]["img"]);
   }
 
@@ -46,7 +52,12 @@ export class FormularioComponent implements OnInit {
 
     let marcaValid = this.formulario.get("marca")?.value != "Default",
     paqueteValid = this.formulario.get("paquete")?.value != "Default",
-    cuotasValid = this.formulario.get("cuotas")?.value != "Default"
+    cuotasValid = this.formulario.get("cuotas")?.value != "Default";
+
+    // cambio de estado al presionar enviar
+    this.marcaState = !marcaValid;
+    this.paqueteState = !paqueteValid;
+    this.cuotasState = !cuotasValid;
 
     if(!marcaValid){
       this.formulario.get("marca")?.setErrors({ error: "No hay marca seleccionada"});
@@ -85,9 +96,18 @@ export class FormularioComponent implements OnInit {
 
   }
 
+  validStateCuotas(event: any){
+    if(!this.formulario.get('cuotas')?.valid){
+      this.formulario.get('cuotas')?.setErrors({ error: "No hay cuota seleccionada"});
+      this.formulario.controls['cuotas'].setErrors(null);
+    }
+  }
 
-  validStateCuotas(): boolean{
-    return !this.formulario.get('cuotas')?.valid;
+  validStatePaquete(event: any){
+    if(!this.formulario.get('paquete')?.valid){
+      this.formulario.get('paquete')?.setErrors({ error: "No hay cuota seleccionada"});
+      this.formulario.controls['paquete'].setErrors(null);
+    }
   }
 
 }
