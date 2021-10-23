@@ -23,7 +23,7 @@ export class CotizadorPrespuestoService {
 
   setCotizacion(cotizacion : Cotizacion){
     // almacenarlo en comportamiento
-    cotizacion.id = this.getId();
+    cotizacion.id = this.localStorage.getId();
     // almacenarlo en local
     this.localStorage.addNewCotizacion(cotizacion);
     this.cotizacion.next(cotizacion);
@@ -31,21 +31,6 @@ export class CotizadorPrespuestoService {
 
   setResultCotizacion(result: boolean){
     this.resultCotizacion.next(result);
-  }
-
-  getId() : number{
-    let hasId = window.localStorage.hasOwnProperty('id');
-    let id = 0;
-    if(hasId) {
-      id = JSON.parse(JSON.stringify(window.localStorage.getItem('id')));
-    }
-    this.setId(id);
-    return id;
-  }
-
-  setId(increment: number){
-    increment++;
-    window.localStorage.setItem("id", JSON.stringify(increment));
   }
 
 }

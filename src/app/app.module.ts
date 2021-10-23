@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { forwardRef, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { PrespuestoComponent } from './pages/prespuesto/prespuesto.component';
@@ -38,7 +38,13 @@ import { PresSelectComponent } from './components/pres-select/pres-select.compon
     ReactiveFormsModule,
     ChartsModule
   ],
-  providers: [],
+  providers: [
+    {
+    provide: NG_VALUE_ACCESSOR,
+    multi: true,
+    useExisting: forwardRef(() => PresSelectComponent),
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

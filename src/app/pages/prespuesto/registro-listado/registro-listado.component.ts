@@ -22,7 +22,6 @@ export class RegistroListadoComponent implements OnInit {
     // si cambia el ultimo resultado se actualiza el listado
     this.cotizadorService.cotizacion.subscribe( (changeLastRegister) => {
       this.cotizaciones = this.localStorage.getAll();
-      console.log(this.cotizaciones)
     })
   }
 

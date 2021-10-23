@@ -24,6 +24,18 @@ export class LocalstorageCotizacionesService {
     return cotizaciones;
   }
 
+  getId() : number{
+    let hasId: boolean = window.localStorage.hasOwnProperty('id');
+    let id: number = hasId ? JSON.parse(JSON.stringify(window.localStorage.getItem('id'))) : 0;
+    this.setId(id);
+    return id;
+  }
+
+  setId(increment: number){
+    increment++;
+    window.localStorage.setItem("id", JSON.stringify(increment));
+  }
+
   private saveAll(cotizaciones: Cotizacion[]) {
     let cotizacionesString: string = JSON.stringify(cotizaciones);
     window.localStorage.setItem(this.cotizaciones, cotizacionesString);

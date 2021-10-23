@@ -2,50 +2,45 @@
     <form class="body" [formGroup]="formulario" (ngSubmit)="SendResult()">
         <div class="row">
             <div class="form-group col-3">
-                <label class="d-flex" [class.invalid]="!formulario.get('marca')?.valid">
-                    <i class='bx bxs-carousel text-info' style="margin-right: 5px; font-size: 1.2em;"></i>
-                    Seleccioná tu marca
-                </label>
-                <select (change)="MarcaSelected()" formControlName="marca">
-                        <option *ngFor="let marc of marcasList" [value]="marc.value" [selected]="marc.selected" > {{ marc.label }}</option>
-                </select>
-            </div>
-            <div class="form-group col-3">
-                <label class="d-flex" [class.invalid]="!formulario.get('paquete')?.valid">
-                    <i class='bx bxs-component text-info' style="margin-right: 5px; font-size: 1.2em;"></i>
-                    Seleccioná el paquete
-                </label>
-                <select  formControlName="paquete">
-                    <option value="Default" selected>-- Seleccionar --</option>
-                    <option value="Full">Full</option>
-                    <option value="Base">Base</option>
-                </select>
-                <!--  -->
+                <pres-select
+                    [formulario]="formulario"
+                    [labelName]="marcaLabel"
+                    formControlName="marca"
+                    [formularioControlState]="marcaState"
+                    [options]="marcasList"
+                    [hasMethodChange]="true"
+                    (optionSelectedMethod)="MarcaSelected($event)" ngDefaultControl>
+                </pres-select>
             </div>
             <div class="form-group col-3">
                 <pres-select
                     [formulario]="formulario"
-                    labelName="Cuotas - Interes"
+                    [labelName]="paqueteLabel"
+                    [formularioControlState]="paqueteState"
+                    formControlName="paquete"
+                    [options]="paqueteList"
+                    [hasMethodChange]="true"
+                    (optionSelectedMethod)="validStatePaquete($event)" ngDefaultControl>
+                </pres-select>
+            </div>
+            <div class="form-group col-3">
+                <pres-select
+                    [formulario]="formulario"
+                    [labelName]="cuotasLabel"
+                    [formularioControlState]="cuotasState"
                     formControlName="cuotas"
                     [options]="cuotasList"
-                    > 
-                <!-- [labelStyle]="'color': interes != '0' ? 'red' : 'grey'"
-                    [labelKey]="interes"
-                    labelBefore="%" -->
+                    [hasMethodChange]="true"
+                    (optionSelectedMethod)="validStateCuotas($event)" ngDefaultControl>
                 </pres-select>
-                <!-- <label class="d-flex" [class.invalid]="!formulario.get('cuotas')?.valid">
-                    <i class='bx bxs-calculator text-info' style="margin-right: 5px; font-size: 1.2em;"></i>
-                    Cuotas - Interes
-                    <span style="margin-left: 5px;" [ngStyle]="{ 'color': interes != '0' ? 'red' : 'grey' }"> {{ interes }}%</span>
-                </label>
-                <select formControlName="cuotas">
-                    <option *ngFor="let cuota of cuotasList" [value]="cuota.value" [selected]="cuota.selected">{{ cuota.label }}</option>
-                </select> -->
             </div>
             <div class="form-group col-3 m-10">
-                <!-- [disabled]="!formulario.valid" -->
-                <button class="button" type="submit" [disabled]="!formulario.valid"><i class='bx bxs-edit-alt'
-                        style="margin-right: 5px; font-size: 22px;"></i>Cotizar</button>
+                <button class="button" type="submit" [disabled]="!formulario.valid">
+                    <i class='bx bxs-edit-alt'
+                        style="margin-right: 5px; font-size: 22px;">
+                    </i>
+                    Cotizar
+                </button>
             </div>
         </div>
     </form>

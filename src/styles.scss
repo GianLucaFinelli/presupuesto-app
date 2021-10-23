@@ -253,6 +253,11 @@ body{
     cursor: pointer;
 }
 
+.button:disabled{
+    background-color: var(--color-secondary);
+    cursor: default;
+}
+
 .button-action{
     display: flex;
     flex-direction: row;
@@ -382,4 +387,8 @@ body{
 .invalid{
     color: #b33015;
     font-weight: bold;
+}
+
+.invalidInput{
+    border: 1px solid #b33015 !important;
 }

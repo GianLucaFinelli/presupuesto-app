@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CotizadorPrespuestoService } from 'src/app/services/cotizador-prespuesto.service';
 import { imagesMarcas } from 'src/app/shared/enums';
-import { Cotizacion } from 'src/app/shared/models/cotizacion';
 
 @Component({
   selector: 'app-prespuesto',
@@ -17,7 +16,9 @@ export class PrespuestoComponent implements OnInit {
   nombreCompleto: string = "";
   enabled: boolean = false;
 
-  constructor(private cotizadorService: CotizadorPrespuestoService) { }
+  constructor(
+    private cotizadorService: CotizadorPrespuestoService,
+    private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.cotizadorService.setMarcaSelected(imagesMarcas.default);

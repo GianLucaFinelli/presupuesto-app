@@ -1,4 +1,3 @@
-
 export class Cotizacion {
     id!: number;
     precio!: string;

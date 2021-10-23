@@ -78,6 +78,23 @@ export const marcasOptions: any = [
     },
   ];
 
+  export const paqueteList: any[] = [
+    {
+      selected: true,
+      value: "Default",
+      label: "-- Seleccionar --"
+    },
+    {
+      selected: false,
+      value: "Full",
+      label:"Full"
+    } ,
+    {
+      selected: false,
+      value: "Base",
+      label: "Base"
+    }
+  ];
 
   export const cuotasOptions: any = [
     {
