@@ -10,22 +10,25 @@ import { Cotizacion } from 'src/app/shared/models/cotizacion';
 })
 export class RegistroActualComponent implements OnInit {
 
+  classBadge: string = "badge-primary"
   cotizacion: Cotizacion | null = new Cotizacion({});
   cuotas: number[] = [];
+
+  paquetes = {
+    full: "Full",
+    base: "Base"
+  };
 
   constructor(
     private cotizadorService: CotizadorPrespuestoService,
     private localStorage: LocalstorageCotizacionesService) { }
 
   ngOnInit(): void {
-    // this.cotizadorService.resultCotizacion.subscribe( (next: boolean) => {
-    //   this.result = next;
-    // })
-
     this.cotizadorService.cotizacion.subscribe( (next: Cotizacion) => {
       this.cotizacion = next;
       this.cotizacion = this.localStorage.getLastCotizacion();
     })
 
+    this.classBadge = this.paquetes.full == this.cotizacion?.paquete ? "badge-primary" : "badge-secondary";
   }
 }

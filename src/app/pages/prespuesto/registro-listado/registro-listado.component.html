@@ -61,7 +61,10 @@
         {{ cotizacion.marca }}
       </div>
       <div class="w-25">
-        <span class="badge badge-primary">{{ cotizacion.paquete }}</span>
+        <span
+        class="badge badge-primary"
+        [class.badge-primary]="this.paquetes.full == cotizacion.paquete"
+        [class.badge-secondary]="this.paquetes.base == cotizacion.paquete">{{ cotizacion.paquete }}</span>
       </div>
       <div class="w-25">
         {{ cotizacion.cuotas }}

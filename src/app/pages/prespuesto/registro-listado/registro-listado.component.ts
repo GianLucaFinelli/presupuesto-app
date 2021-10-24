@@ -11,6 +11,11 @@ import { Cotizacion } from 'src/app/shared/models/cotizacion';
 export class RegistroListadoComponent implements OnInit {
 
   cotizaciones: Cotizacion[] = [];
+  paquetes = {
+    full: "Full",
+    base: "Base"
+  };
+
   constructor(
     private cotizadorService: CotizadorPrespuestoService,
     private localStorage: LocalstorageCotizacionesService

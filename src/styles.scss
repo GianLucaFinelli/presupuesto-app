@@ -4,11 +4,12 @@
     --color-gray: #F5F3F3;
     --color-dark-gray: #B9B9B9;
     --color-secondary: #6d6d6d;
+    --color-dark-secondary: rgb(43, 43, 43);
     --bg-color: rgb(255, 255, 255);
     --bg-box-color: rgb(240, 240, 240);
     --border-box-color: #e1e1e1;
     --color-blue: #4EB4FF;
-    --color-dark-blue:rgb(46, 117, 167);
+    --color-dark-blue:rgb(28, 84, 124);
     --color-blue-transparent: #4eb5ff80;
     --text-color: rgb(21, 21, 21);
     --br-box: 8px;
@@ -160,11 +161,17 @@ body{
 .badge{
     border-radius: var(--br-box);
     padding: 3px 15px;
+    font-weight: 600;
 }
 
 .badge-primary{
     color: var(--color-dark-blue);
     background-color: var(--color-blue-transparent);
+}
+
+.badge-secondary{
+    color: var(--color-dark-secondary);
+    background-color: var(--color-dark-gray);
 }
 
 /* ------------------ */
