@@ -1,4 +1,5 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
 import { CotizadorPrespuestoService } from 'src/app/services/cotizador-prespuesto.service';
 import { imagesMarcas } from 'src/app/shared/enums';
 
@@ -21,6 +22,7 @@ export class PrespuestoComponent implements OnInit {
     private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
+
     this.cotizadorService.setMarcaSelected(imagesMarcas.default);
     this.cotizadorService.resultCotizacion.subscribe( (next: boolean) => {
       this.enabled = next;

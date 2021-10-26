@@ -1,10 +1,11 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { CotizadorPrespuestoService } from 'src/app/services/cotizador-prespuesto.service';
 import { cuotas, cuotasOptions, marcas, marcasOptions, paqueteList } from 'src/app/shared/enums';
 import { Cotizacion } from 'src/app/shared/models/cotizacion';
 
 import { FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
+import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-formulario',
@@ -12,6 +13,9 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./formulario.component.scss']
 })
 export class FormularioComponent implements OnInit {
+
+  @ViewChild(ToastContainerDirective, { static: true })
+  toastContainer!: ToastContainerDirective;
 
   marcaLabel: string = "Seleccioná tu marca";
   marcaState: boolean = false;
@@ -38,8 +42,9 @@ export class FormularioComponent implements OnInit {
   constructor(
     private cotizadorService: CotizadorPrespuestoService,
     private fb: FormBuilder,
-    private cdr: ChangeDetectorRef)
-  { }
+    private cdr: ChangeDetectorRef,
+    private toastrService: ToastrService)
+  { this.toastrService.overlayContainer = this.toastContainer; }
 
   ngOnInit(): void {
   }
@@ -92,6 +97,10 @@ export class FormularioComponent implements OnInit {
       cotizacion.precioFinal = cotizacion.PrecioFinal();
       this.cotizadorService.setCotizacion(cotizacion);
       this.cotizadorService.setResultCotizacion(true);
+      this.toastrService.success('Su registro se ah actualizado!', 'Éxito al acutalizar...');
+    }
+    else{
+      this.toastrService.error('Error al crear una cotización', 'Complete los campos correctamente...');
     }
 
   }

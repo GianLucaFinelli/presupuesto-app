@@ -1,5 +1,6 @@
 import { forwardRef, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { RegistroListadoComponent } from './pages/prespuesto/registro-listado/re
 import { RegistroActualComponent } from './pages/prespuesto/registro-actual/registro-actual.component';
 import { RegistroEstadisticsChartComponent } from './pages/prespuesto/registro-estadistics-chart/registro-estadistics-chart.component';
 import { PresSelectComponent } from './components/pres-select/pres-select.component';
+import { ToastContainerModule, ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -33,10 +35,15 @@ import { PresSelectComponent } from './components/pres-select/pres-select.compon
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    ChartsModule
+    ChartsModule,
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      preventDuplicates: true,
+    }),
+    ToastContainerModule,
   ],
   providers: [
     {
