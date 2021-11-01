@@ -6,6 +6,7 @@ import { Cotizacion } from 'src/app/shared/models/cotizacion';
 import { FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
+import { PresSelectComponent } from 'src/app/components/pres-select/pres-select.component';
 
 @Component({
   selector: 'app-formulario',
@@ -16,6 +17,10 @@ export class FormularioComponent implements OnInit {
 
   @ViewChild(ToastContainerDirective, { static: true })
   toastContainer!: ToastContainerDirective;
+
+  @ViewChild('selectMarca') selectMarca!: PresSelectComponent;
+  @ViewChild('selectPaquete') selectPaquete!: PresSelectComponent;
+  @ViewChild('selectCuotas') selectCuotas!: PresSelectComponent;
 
   marcaLabel: string = "Seleccioná tu marca";
   marcaState: boolean = false;
@@ -50,34 +55,18 @@ export class FormularioComponent implements OnInit {
   }
 
   MarcaSelected(result : any){
+    this.validateControl(result);
     this.cotizadorService.setMarcaSelected(marcas[this.formulario.get("marca")?.value]["img"]);
   }
 
   SendResult(){
+    let marcaValid = this.formulario.get("marca")?.value == "Default",
+    paqueteValid = this.formulario.get("paquete")?.value == "Default",
+    cuotasValid = this.formulario.get("cuotas")?.value == "Default";
 
-    let marcaValid = this.formulario.get("marca")?.value != "Default",
-    paqueteValid = this.formulario.get("paquete")?.value != "Default",
-    cuotasValid = this.formulario.get("cuotas")?.value != "Default";
-
-    // cambio de estado al presionar enviar
-    this.marcaState = !marcaValid;
-    this.paqueteState = !paqueteValid;
-    this.cuotasState = !cuotasValid;
-
-    if(!marcaValid){
-      this.formulario.get("marca")?.setErrors({ error: "No hay marca seleccionada"});
-      this.cotizadorService.setResultCotizacion(false);
-    }
-
-    if(!paqueteValid){
-      this.formulario.get("paquete")?.setErrors({ error: "No hay paquete seleccionada"});
-      this.cotizadorService.setResultCotizacion(false);
-    }
-
-    if(!cuotasValid){
-      this.formulario.get("cuotas")?.setErrors({ error: "No hay cuota seleccionada"});
-      this.cotizadorService.setResultCotizacion(false);
-    }
+    this.validState(marcaValid,'marca');
+    this.validState(paqueteValid,'paquete');
+    this.validState(cuotasValid,'cuotas');
 
     if(marcaValid && paqueteValid && cuotasValid){
       this.cdr.detectChanges();
@@ -105,18 +94,46 @@ export class FormularioComponent implements OnInit {
 
   }
 
-  validStateCuotas(event: any){
-    if(!this.formulario.get('cuotas')?.valid){
-      this.formulario.get('cuotas')?.setErrors({ error: "No hay cuota seleccionada"});
-      this.formulario.controls['cuotas'].setErrors(null);
+  validateControl(formControlName: any = null){
+    if(this.formulario.get(formControlName)?.value == "Default"){
+      this.formulario.get(formControlName)?.setErrors({ error: "No hay cuota seleccionada"});
+      this.formulario.controls[formControlName].setErrors(null);
+      return true;
     }
+    return false;
   }
 
-  validStatePaquete(event: any){
-    if(!this.formulario.get('paquete')?.valid){
-      this.formulario.get('paquete')?.setErrors({ error: "No hay cuota seleccionada"});
-      this.formulario.controls['paquete'].setErrors(null);
+  validState(stateDefault: boolean, control: string){
+    if(stateDefault){
+      this.formulario.get(control)?.setErrors({ error: "No hay marca seleccionada"});
+      this.formulario.controls[control].setErrors(null);
+      this.cotizadorService.setResultCotizacion(false);
+      if(control == "marca"){
+        this.controlStateMarca();
+      }
+      else if (control == "paquete"){
+        this.controlStatePaquete();
+      }
+      else if (control == "cuotas") {
+        this.controlStateCuotas();
+      }
     }
+    this.cdr.detectChanges();
+  }
+
+  controlStateMarca(){
+    this.marcaState = true;
+    this.selectMarca.formularioControlState = true;
+  }
+
+  controlStatePaquete(){
+    this.paqueteState = true;
+    this.selectPaquete.formularioControlState = true;
+  }
+
+  controlStateCuotas(){
+    this.cuotasState = true;
+    this.selectCuotas.formularioControlState = true;
   }
 
 }

@@ -4,6 +4,7 @@
         {{ labelName }}
         <!-- <span *ngIf="labelKey" style="margin-left: 5px;" [ngStyle]="labelStyle"> {{ labelKey }} {{ labelBefore }}</span> -->
     </label>
+    <!-- (blur)="selectValid()" -->
     <select *ngIf="hasMethodChange"
         (change)="optionSelected()"
         [class.invalidInput]="formularioControlState"

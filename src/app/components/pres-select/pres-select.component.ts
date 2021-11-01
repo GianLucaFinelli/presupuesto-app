@@ -12,7 +12,7 @@ export class PresSelectComponent implements ControlValueAccessor, OnInit{
   * | TODO:            |
   * | STATUS: RESOLVED |
   * --------------------
-  * 
+  *
   *   SOLUTION:
   *   * Se utiliza una propiedad de tipo FormGroup
   *     para que traiga el valor del propio grupo que se evaluando reactivamente
@@ -28,7 +28,7 @@ export class PresSelectComponent implements ControlValueAccessor, OnInit{
   @Input() labelKey!: string;
   @Input() labelBefore:string = "";
 
-  @Output() optionSelectedMethod : EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() optionSelectedMethod : EventEmitter<string> = new EventEmitter<string>();
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -36,13 +36,12 @@ export class PresSelectComponent implements ControlValueAccessor, OnInit{
 
 
   ngOnInit(): void {
-    this.cdr.detectChanges();
-    this.formularioControlState = !this.formulario.get(`${[this.formControlName]}`)?.valid;
+    console.log("In Selecte: ", this.formulario.get(this.formControlName))
   }
 
   optionSelected(){
-    this.optionSelectedMethod.emit(true);
-    this.formularioControlState = !this.formulario.get(`${[this.formControlName]}`)?.valid;
+    this.optionSelectedMethod.emit(this.formControlName);
+    this.formularioControlState = !this.formulario.get(`${[this.formControlName]}`)?.valid as boolean;
   }
 
   selectValid(){

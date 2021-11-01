@@ -4,6 +4,7 @@
         <div class="row">
             <div class="form-group col-3">
                 <pres-select
+                    #selectMarca
                     [formulario]="formulario"
                     [labelName]="marcaLabel"
                     formControlName="marca"
@@ -15,24 +16,26 @@
             </div>
             <div class="form-group col-3">
                 <pres-select
+                    #selectPaquete
                     [formulario]="formulario"
                     [labelName]="paqueteLabel"
                     [formularioControlState]="paqueteState"
                     formControlName="paquete"
                     [options]="paqueteList"
                     [hasMethodChange]="true"
-                    (optionSelectedMethod)="validStatePaquete($event)" ngDefaultControl>
+                    (optionSelectedMethod)="validateControl($event)" ngDefaultControl>
                 </pres-select>
             </div>
             <div class="form-group col-3">
                 <pres-select
+                    #selectCuotas
                     [formulario]="formulario"
                     [labelName]="cuotasLabel"
                     [formularioControlState]="cuotasState"
                     formControlName="cuotas"
                     [options]="cuotasList"
                     [hasMethodChange]="true"
-                    (optionSelectedMethod)="validStateCuotas($event)" ngDefaultControl>
+                    (optionSelectedMethod)="validateControl($event)" ngDefaultControl>
                 </pres-select>
             </div>
             <div class="form-group col-3 m-10">

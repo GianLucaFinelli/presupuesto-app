@@ -1,7 +1,10 @@
 <div class="d-flex justify-content-between flex-wrap m-20">
     <h3 class="article-cabecera">{{ titular }}</h3>
     <div class="d-flex ">
-        <button class="button" style="margin-right: 5px;"><i class='bx bxs-printer' style="margin-right: 5px;"></i> Imprimir</button>
+        <button class="button" style="margin-right: 5px;" (click)="ExportExcel()">
+            <i class='bx bxs-printer' style="margin-right: 5px;"></i>
+            Imprimir
+        </button>
         <button class="button"><i class='bx bxs-cloud-download' style="margin-right: 5px;"></i> Descargar</button>
     </div>
 </div>
