@@ -68,7 +68,7 @@ export class FormularioComponent implements OnInit {
     this.validState(paqueteValid,'paquete');
     this.validState(cuotasValid,'cuotas');
 
-    if(marcaValid && paqueteValid && cuotasValid){
+    if(!marcaValid && !paqueteValid && !cuotasValid){
       this.cdr.detectChanges();
       const descripcionCuotasInput = this.formulario.get("cuotas")?.value == "Default" ?
         cuotas[this.formulario.get("cuotas")?.value.toLowerCase()]["value"].toLowerCase() :
@@ -89,6 +89,7 @@ export class FormularioComponent implements OnInit {
       this.toastrService.success('Su registro se ah actualizado!', 'Éxito al acutalizar...');
     }
     else{
+      this.formulario.setErrors({ error: "Formulario invalido"});
       this.toastrService.error('Error al crear una cotización', 'Complete los campos correctamente...');
     }
 
