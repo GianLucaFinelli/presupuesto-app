@@ -38,7 +38,11 @@ body{
     // font-family: 'Advent Pro', sans-serif;
     font-family: 'Oxygen', sans-serif;
     font-size: 14px;
-    transition: 0.3s all ease;
+    // transition: 0.3s all ease;
+}
+
+.text-align {
+    text-align: center;
 }
 
 .text-secondary{
@@ -117,6 +121,10 @@ body{
 
 .text-center{
     text-align: center;
+}
+
+.flex-column{
+    flex-direction: column;
 }
 
 .row{

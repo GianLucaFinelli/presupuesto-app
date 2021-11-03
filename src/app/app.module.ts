@@ -17,6 +17,8 @@ import { RegistroActualComponent } from './pages/prespuesto/registro-actual/regi
 import { RegistroEstadisticsChartComponent } from './pages/prespuesto/registro-estadistics-chart/registro-estadistics-chart.component';
 import { PresSelectComponent } from './components/pres-select/pres-select.component';
 import { ToastContainerModule, ToastrModule } from 'ngx-toastr';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { StringFilterPipe } from './pipes/string-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { ToastContainerModule, ToastrModule } from 'ngx-toastr';
     RegistroActualComponent,
     RegistroListadoComponent,
     RegistroEstadisticsChartComponent,
-    PresSelectComponent
+    PresSelectComponent,
+    StringFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -44,6 +47,7 @@ import { ToastContainerModule, ToastrModule } from 'ngx-toastr';
       preventDuplicates: true,
     }),
     ToastContainerModule,
+    NgxPaginationModule
   ],
   providers: [
     {

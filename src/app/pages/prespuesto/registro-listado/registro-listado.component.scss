@@ -1,0 +1,45 @@
+::ng-deep{
+
+  .my-pagination{
+    transition: 0s all ease !important;
+  }
+
+  .ngx-pagination .current,
+  .ngx-pagination a,
+  .ngx-pagination .disabled{
+    padding: 5px 10px !important;
+    border-radius: 5px !important;
+    background-color: var(--color-blue-transparent);
+    margin: 3px;
+  }
+
+  .ngx-pagination a {
+    &:hover{
+      background: var(--color-blue-transparent) !important;
+    }
+  }
+
+  .ngx-pagination .disabled {
+    color: black !important;
+  }
+
+  .pagination-previous.disabled,
+  .pagination-next.disabled {
+    background: var(--color-gray) !important;
+  }
+
+}
+
+.pagination-list{
+  height: auto;
+  display: flex;
+  justify-content: center;
+  // margin: 10px 30px;
+}
+
+.component-mobile{
+  margin: 20px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: #f7f7f7;
+}
