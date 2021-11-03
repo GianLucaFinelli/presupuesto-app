@@ -18,7 +18,6 @@ import { RegistroEstadisticsChartComponent } from './pages/prespuesto/registro-e
 import { PresSelectComponent } from './components/pres-select/pres-select.component';
 import { ToastContainerModule, ToastrModule } from 'ngx-toastr';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { StringFilterPipe } from './pipes/string-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -33,8 +32,7 @@ import { StringFilterPipe } from './pipes/string-filter.pipe';
     RegistroActualComponent,
     RegistroListadoComponent,
     RegistroEstadisticsChartComponent,
-    PresSelectComponent,
-    StringFilterPipe
+    PresSelectComponent
   ],
   imports: [
     BrowserModule,
