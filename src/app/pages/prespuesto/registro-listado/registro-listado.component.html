@@ -97,7 +97,7 @@
             | paginate: { itemsPerPage: 5, currentPage: currentPage }
         "
       >
-        <div class="w-50 m-10 d-flex flex-column justify-content-around">
+        <div class="w-75 d-flex flex-column justify-content-around">
           <div class="m-10 text-align">
             {{ cotizacion.marca }}
           </div>
@@ -116,11 +116,11 @@
             {{ cotizacion.precioFinal | currency }}
           </div>
         </div>
-        <div class="w-50 m-10 d-flex justify-content-around align-center">
-          <button class="button-action" style="margin-right: 5px">
+        <div class="w-25 d-flex flex-column justify-content-around align-center bg-botonera-responsive">
+          <button class="button-action-responsive" style="margin-right: 5px">
             <i class="bx bxs-edit"></i>
           </button>
-          <button class="button-action" (click)="deleteCotizacion(cotizacion)">
+          <button class="button-action-responsive" (click)="deleteCotizacion(cotizacion)">
             <i class="bx bxs-trash-alt"></i>
           </button>
         </div>
