@@ -1,0 +1,55 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{ title }}</h4>
+</div>
+<div class="modal-body">
+  <div class="article">
+    <form class="body" [formGroup]="formulario" (ngSubmit)="SendResult()">
+        <div class="row">
+            <div class="form-group col-3">
+                <pres-select
+                    #selectMarca
+                    [formulario]="formulario"
+                    [labelName]="marcaLabel"
+                    formControlName="marca"
+                    [formularioControlState]="marcaState"
+                    [options]="marcasList"
+                    [hasMethodChange]="true"
+                    (optionSelectedMethod)="MarcaSelected($event)" ngDefaultControl>
+                </pres-select>
+            </div>
+            <div class="form-group col-3">
+                <pres-select
+                    #selectPaquete
+                    [formulario]="formulario"
+                    [labelName]="paqueteLabel"
+                    [formularioControlState]="paqueteState"
+                    formControlName="paquete"
+                    [options]="paqueteList"
+                    [hasMethodChange]="true"
+                    (optionSelectedMethod)="validateControl($event)" ngDefaultControl>
+                </pres-select>
+            </div>
+            <div class="form-group col-3">
+                <pres-select
+                    #selectCuotas
+                    [formulario]="formulario"
+                    [labelName]="cuotasLabel"
+                    [formularioControlState]="cuotasState"
+                    formControlName="cuotas"
+                    [options]="cuotasList"
+                    [hasMethodChange]="true"
+                    (optionSelectedMethod)="validateControl($event)" ngDefaultControl>
+                </pres-select>
+            </div>
+            <div class="form-group col-3 m-10">
+                <button class="button" type="submit" [disabled]="!formulario.valid">
+                    <i class='bx bxs-edit-alt'
+                        style="margin-right: 5px; font-size: 22px;">
+                    </i>
+                    Editar Cotización
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+</div>

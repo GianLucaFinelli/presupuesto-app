@@ -79,7 +79,7 @@
           {{ cotizacion.precioFinal | currency }}
         </div>
         <div class="w-25 d-flex justify-content-center">
-          <button class="button-action" style="margin-right: 5px">
+          <button class="button-action" (click)="dialog(cotizacion)" style="margin-right: 5px">
             <i class="bx bxs-edit"></i>
           </button>
           <button class="button-action" (click)="deleteCotizacion(cotizacion)">
@@ -135,7 +135,7 @@
     <span>No se encontraron registros</span>
   </div>
 
-  <div class="pagination-list">
+  <div class="pagination-list" *ngIf="cotizaciones.length != 0">
     <!-- <label class="control"
       >Filter items
       <input
@@ -162,3 +162,4 @@
   [autoHide]="true"
   [responsive]="true" -->
 </div>
+

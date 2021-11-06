@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { Cotizacion } from '../shared/models/cotizacion';
+import { CotizadorPrespuestoService } from './cotizador-prespuesto.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +9,8 @@ import { Cotizacion } from '../shared/models/cotizacion';
 export class LocalstorageCotizacionesService {
 
   cotizaciones = "cotizaciones";
+
+  resultCotizacion : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor() { }
 
@@ -51,7 +55,19 @@ export class LocalstorageCotizacionesService {
     let cotizaciones : Cotizacion[] = this.getAll();
     cotizaciones = cotizaciones.filter(item => item.id != cotizacion.id);
     this.saveAll(cotizaciones);
-
+    this.resultCotizacion.next(true);
     return this.getAll();
+  }
+
+  updateCotizacion(cotizacion: Cotizacion) {
+    let cotizaciones : Cotizacion[] = this.getAll();
+    cotizaciones.forEach( coti => {
+      if(coti.id == cotizacion.id){
+        coti = cotizacion;
+      }
+    });
+    console.log(cotizaciones)
+    this.saveAll(cotizaciones);
+    this.resultCotizacion.next(true);
   }
 }

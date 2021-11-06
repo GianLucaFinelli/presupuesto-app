@@ -18,6 +18,9 @@ import { RegistroEstadisticsChartComponent } from './pages/prespuesto/registro-e
 import { PresSelectComponent } from './components/pres-select/pres-select.component';
 import { ToastContainerModule, ToastrModule } from 'ngx-toastr';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { EditCotizacionComponent } from './components/modals/edit-cotizacion/edit-cotizacion.component';
+import { DialogConfigModule, NgxAwesomePopupModule } from '@costlydeveloper/ngx-awesome-popup';
+import { ConfirmationComponent } from './components/modals/confirmation/confirmation.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     RegistroActualComponent,
     RegistroListadoComponent,
     RegistroEstadisticsChartComponent,
-    PresSelectComponent
+    PresSelectComponent,
+    EditCotizacionComponent,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +50,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
       preventDuplicates: true,
     }),
     ToastContainerModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxAwesomePopupModule.forRoot(), // Essential, mandatory main module.
+    DialogConfigModule.forRoot() // Essential, mandatory dialog module.
   ],
   providers: [
     {
