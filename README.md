@@ -23,3 +23,19 @@ ng serve --o
 ```
 
  Correra automaticamente en el puerto `http://localhost:4200/`
+ 
+ ## UI Interface
+ 
+ #### Diseño de la pagina de cotización
+ 
+ - Formulario visualmente simple
+ - Estadisticas, listado y  ultimo registro (actual)
+ 
+![Frontweb](https://i.imgur.com/qpnONwe.png)
+
+ - Formulario visualmente simple desplegado desde abajo
+ - Menu responsive
+ - Estadisticas, listado y ultimo registro (actual)
+    - **El listado es un componente**
+ 
+ ![Frontmobile](https://i.imgur.com/jR7k60s.png)
